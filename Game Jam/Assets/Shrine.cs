@@ -4,12 +4,21 @@ using System.Collections.Generic;
 
 public class Shrine : MonoBehaviour {
 	public enum ShrineType{
-		FirePower
+		Healing
 	}
+
+	public enum Phase{
+		Night,
+		Day
+	}
+
+	[SerializeField]private ShrineType m_type;
 
 	[SerializeField]private string m_shrineExplanation;
 
 	[SerializeField]private List<string> m_shrinePoems;
+
+	private static Phase s_phase;
 
 	private const float c_baseReadingTime = 7.0f;
 
@@ -23,6 +32,7 @@ public class Shrine : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		m_particleSystem.enableEmission = false;
 		if (s_player == null) {
 			s_player = GameObject.FindGameObjectWithTag ("Player");
 		}
@@ -31,6 +41,15 @@ public class Shrine : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
+	}
+
+	public static void SetNight(){
+		s_phase = Phase.Night;
+	}
+
+
+	public static void SetDay(){
+		s_phase = Phase.Day;
 	}
 
 	private IEnumerator WaitForSpace(){
@@ -88,7 +107,46 @@ public class Shrine : MonoBehaviour {
 		TextManager.SetText ("");
 	}
 
+	[SerializeField]private float m_activeTime = 5.0f;
+	[SerializeField]private ParticleSystem m_particleSystem;
+	[SerializeField]private float m_effectiveness = 1.0f;
+
+	private IEnumerator ShrineActive(){
+		m_particleSystem.enableEmission = true;
+
+		float t = 0.0f;
+		while (t < m_activeTime) {
+			float dt = Time.deltaTime;
+			t += dt;
+			DoEffect (dt);
+			yield return new WaitForEndOfFrame ();
+		}
+		m_particleSystem.enableEmission = false;
+
+
+	}
+
+	private void DoEffect(float dt){
+		float dist = Vector3.Distance (s_player.transform.position, transform.position);
+		switch (m_type) {
+		case ShrineType.Healing:
+			//See if the player is close enough
+			if( dist < m_triggerDistance){
+				//if he is heal him as a function of time and effectiveness and distance
+				Health.Heal((1 + m_triggerDistance - dist) * m_effectiveness * dt);
+			}
+			break;
+		}
+	}
+
+	public void TurnOn(){
+		Debug.Log ("127: Turn on");
+		StartCoroutine (ShrineActive ());
+	}
+
 	void OnMouseDown(){
-		StartCoroutine (ExamineShrine ());
+		if (s_phase == Phase.Day) {
+			StartCoroutine (ExamineShrine ());
+		}
 	}
 }
