@@ -7,16 +7,26 @@ public class Shrine : MonoBehaviour {
 		Healing
 	}
 
+	public enum ExcavationStatus{
+		Buried,
+		Excavated
+	}
+
 	public enum Phase{
 		Night,
 		Day
 	}
+
+	[SerializeField]private ExcavationStatus m_excavationStatus = ExcavationStatus.Excavated;
+
 
 	[SerializeField]private ShrineType m_type;
 
 	[SerializeField]private string m_shrineExplanation;
 
 	[SerializeField]private List<string> m_shrinePoems;
+
+	[SerializeField]private float m_excavationTime = 3.0f;
 
 	private static Phase s_phase;
 
@@ -26,6 +36,7 @@ public class Shrine : MonoBehaviour {
 
 	private bool m_spacePressed = false;
 
+	private const string s_spaceToExcavate = "Press space to excavate statue.";
 	private const string s_spaceToContinue = "Press space to continue.";
 
 	private static float m_triggerDistance = 3.0f;
@@ -62,6 +73,58 @@ public class Shrine : MonoBehaviour {
 		}
 		m_spacePressed = true;
 
+	}
+
+	private IEnumerator ExcavateShrine(){
+		//While you are within range of the gameobject
+		bool finished = false;
+		m_spacePressed = false;
+		//set onscreen text to first line
+
+
+		TextManager.SetText(m_shrinePoems[Random.Range(0,m_shrinePoems.Count)]);
+		m_spacePressed = false; 
+		yield return new WaitForSeconds (.1f);
+		StartCoroutine (WaitForSpace());
+		yield return new WaitForSeconds (.1f);
+		//Wait for player to respond
+		float t = 0.0f;
+		while( Vector3.Distance(s_player.transform.position, transform.position) < m_triggerDistance && t < c_baseReadingTime && m_spacePressed == false){
+			t += Time.deltaTime;
+			yield return new WaitForEndOfFrame ();
+		}
+
+		TextManager.AddText (s_spaceToExcavate);
+
+		//wait for player to respond
+		while( Vector3.Distance(s_player.transform.position, transform.position) < m_triggerDistance && m_spacePressed == false ){
+
+
+			yield return new WaitForEndOfFrame ();
+		}
+		if (Vector3.Distance (s_player.transform.position, transform.position) < m_triggerDistance) {
+			CharacterInput.ImmobilizeCharacter ();
+			yield return new WaitForSeconds (m_excavationTime);
+			CharacterInput.UnImmobilizeCharacter ();
+
+			TextManager.SetText (m_shrineExplanation);
+			m_spacePressed = false; 
+			yield return new WaitForSeconds (.1f);
+			StartCoroutine (WaitForSpace ()); 
+			yield return new WaitForSeconds (.1f);
+			while (Vector3.Distance (s_player.transform.position, transform.position) < m_triggerDistance && m_spacePressed == false) {
+
+
+				yield return new WaitForEndOfFrame ();
+			}
+		}
+		//show explanation
+
+		m_excavationStatus = ExcavationStatus.Excavated;
+
+		//show explanation
+
+		TextManager.SetText ("");
 	}
 
 	private IEnumerator ExamineShrine(){
@@ -139,6 +202,10 @@ public class Shrine : MonoBehaviour {
 		}
 	}
 
+	public static bool IsDay(){
+		return s_phase == Phase.Day;
+	}
+
 	public void TurnOn(){
 		Debug.Log ("127: Turn on");
 		StartCoroutine (ShrineActive ());
@@ -146,7 +213,11 @@ public class Shrine : MonoBehaviour {
 
 	void OnMouseDown(){
 		if (s_phase == Phase.Day) {
-			StartCoroutine (ExamineShrine ());
+			if (m_excavationStatus == ExcavationStatus.Excavated) {
+				StartCoroutine (ExamineShrine ());
+			} else {
+				StartCoroutine (ExcavateShrine ());
+			}
 		}
 	}
 }
