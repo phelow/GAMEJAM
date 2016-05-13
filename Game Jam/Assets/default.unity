@@ -249,7 +249,9 @@ MonoBehaviour:
   _rb: {fileID: 467363291}
   _speed: 1
   _projectilePower: 10
+  _meleePower: 10
   _projectile: {fileID: 160562, guid: b74cfa51ef225d74fa71e3868ffd13c3, type: 2}
+  _melee: {fileID: 160562, guid: 244e29258020aa141bac6e8dc9f8fd73, type: 2}
 --- !u!4 &350621964
 Transform:
   m_ObjectHideFlags: 0

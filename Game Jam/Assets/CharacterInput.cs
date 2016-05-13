@@ -6,8 +6,10 @@ public class CharacterInput : MonoBehaviour {
 
 	[SerializeField]private float _speed;
 	[SerializeField]private float _projectilePower = 10.0f;
+	[SerializeField]private float _meleePower = 10.0f;
 
 	[SerializeField]private GameObject _projectile;
+	[SerializeField]private GameObject _melee;
 
 	// Use this for initialization
 	void Start () {
@@ -21,6 +23,14 @@ public class CharacterInput : MonoBehaviour {
 			Vector3 sp = Camera.main.WorldToScreenPoint (transform.position);
 			Vector3 dir = (Input.mousePosition - sp).normalized;
 			projectile.GetComponent<Rigidbody2D>().AddForce (dir * _projectilePower);
+		}
+		if (Input.GetKeyDown (KeyCode.Mouse1)) {
+			GameObject projectile = GameObject.Instantiate (_melee);
+			projectile.transform.position = transform.position;
+			Vector3 sp = Camera.main.WorldToScreenPoint (transform.position);
+			Vector3 dir = (Input.mousePosition - sp).normalized;
+			projectile.GetComponent<Rigidbody2D>().AddForce (dir * _meleePower);
+			
 		}
 	}
 
