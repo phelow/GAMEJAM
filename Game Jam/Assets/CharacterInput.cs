@@ -28,6 +28,7 @@ public class CharacterInput : MonoBehaviour {
 
 	public static void ImmobilizeCharacter (){
 		m_immobilized = true;
+		Debug.Log ("Character has been immobilized");
 		s_instance._rb.velocity = Vector2.zero;
 	}
 
@@ -49,7 +50,7 @@ public class CharacterInput : MonoBehaviour {
 	}
 
 	void Update(){
-		if (m_immobilized == false) {
+		if (m_immobilized == false && Shrine.IsDay() == false) {
 			if (Input.GetKeyDown (KeyCode.Mouse0)) {
 				GameObject projectile = GameObject.Instantiate (_projectile);
 				projectile.transform.position = transform.position;
@@ -96,24 +97,26 @@ public class CharacterInput : MonoBehaviour {
 
 	private IEnumerator PlayerInput(){
 		while (true) {
-			if (Input.GetAxis ("Vertical") < -0.3f) {
-				transform.up = Vector2.down;
-				_rb.AddRelativeForce (transform.up * _speed);
-			} else if (Input.GetAxis ("Vertical") > .3f) {
-				transform.up = Vector2.up;
-				_rb.AddRelativeForce (transform.up * _speed);
+			if (m_immobilized == false) {
+				if (Input.GetAxis ("Vertical") < -0.3f) {
+					transform.up = Vector2.down;
+					_rb.AddRelativeForce (transform.up * _speed);
+				} else if (Input.GetAxis ("Vertical") > .3f) {
+					transform.up = Vector2.up;
+					_rb.AddRelativeForce (transform.up * _speed);
 
-			}
+				}
 
 
-			if (Input.GetAxis ("Horizontal") < -0.3f) {
+				if (Input.GetAxis ("Horizontal") < -0.3f) {
 
-				transform.up = Vector2.left;
-				_rb.AddRelativeForce (transform.up * _speed);
-			} else if (Input.GetAxis ("Horizontal") > .3f) {
-				transform.up = Vector2.right;
-				_rb.AddRelativeForce (transform.up * _speed);
+					transform.up = Vector2.left;
+					_rb.AddRelativeForce (transform.up * _speed);
+				} else if (Input.GetAxis ("Horizontal") > .3f) {
+					transform.up = Vector2.right;
+					_rb.AddRelativeForce (transform.up * _speed);
 
+				}
 			}
 			yield return new WaitForEndOfFrame ();
 		}

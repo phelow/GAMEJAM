@@ -40,14 +40,15 @@ public class Shrine : MonoBehaviour {
 
 	private const float c_baseReadingTime = 7.0f;
 
-
+	private static bool m_examining = false;
 
 	private static GameObject s_player;
 
-	private bool m_spacePressed = false;
+	private static bool m_clickedToContinue = false;
 
-	private const string s_spaceToExcavate = " Press f to excavate statue.";
-	private const string s_spaceToContinue = " Press f to continue.";
+	private const string s_clickToExcavate = " Click the shrine to excavate statue.";
+	private const string s_clickToContinue = " Click the shrine to continue.";
+	private const string m_excavatingBlurb = " Excavating...";
 
 	private static float m_triggerDistance = 3.0f;
 
@@ -75,56 +76,54 @@ public class Shrine : MonoBehaviour {
 
 	private IEnumerator WaitForSpace(){
 		yield return new WaitForEndOfFrame ();
-		m_spacePressed = false;
+		m_clickedToContinue = false;
 		yield return new WaitForEndOfFrame ();
-		while (Input.GetKey (KeyCode.F) == false && Input.GetKeyDown (KeyCode.F) == false) {
-			Debug.Log ("Waiting for space");
-			yield return new WaitForEndOfFrame ();
-		}
-		m_spacePressed = true;
 
 	}
 
 	private IEnumerator ExcavateShrine(){
+		m_examining = true;
 		//While you are within range of the gameobject
 		bool finished = false;
-		m_spacePressed = false;
+		m_clickedToContinue = false;
 		//set onscreen text to first line
 
-
-		TextManager.SetText(m_shrinePoems[Random.Range(0,m_shrinePoems.Count)]);
-		m_spacePressed = false; 
+		if (Vector3.Distance (s_player.transform.position, transform.position) < m_triggerDistance) {
+			TextManager.SetText (m_shrinePoems [Random.Range (0, m_shrinePoems.Count)]);
+		}
+		m_clickedToContinue = false; 
 		yield return new WaitForSeconds (.1f);
 		StartCoroutine (WaitForSpace());
 		yield return new WaitForSeconds (.1f);
 		//Wait for player to respond
 		float t = 0.0f;
-		while( Vector3.Distance(s_player.transform.position, transform.position) < m_triggerDistance && t < c_baseReadingTime && m_spacePressed == false){
+		while( Vector3.Distance(s_player.transform.position, transform.position) < m_triggerDistance && t < c_baseReadingTime && m_clickedToContinue == false){
 			t += Time.deltaTime;
 			yield return new WaitForEndOfFrame ();
 		}
-
-		TextManager.AddText (s_spaceToExcavate);
-
+		if (Vector3.Distance (s_player.transform.position, transform.position) < m_triggerDistance) {
+			
+			TextManager.AddText (s_clickToExcavate);
+		}
 		//wait for player to respond
-		while( Vector3.Distance(s_player.transform.position, transform.position) < m_triggerDistance && m_spacePressed == false ){
-
-
+		while( Vector3.Distance(s_player.transform.position, transform.position) < m_triggerDistance && m_clickedToContinue == false ){
 			yield return new WaitForEndOfFrame ();
 		}
 		if (Vector3.Distance (s_player.transform.position, transform.position) < m_triggerDistance) {
+			Debug.Log (113);
 			CharacterInput.ImmobilizeCharacter ();
+			TextManager.SetText (m_excavatingBlurb);
 			yield return new WaitForSeconds (m_excavationTime);
 			CharacterInput.UnImmobilizeCharacter ();
 
 			m_excavationStatus = ExcavationStatus.Excavated;
 			m_rb.isKinematic = false;
 			TextManager.SetText (m_shrineExplanation);
-			m_spacePressed = false; 
+			m_clickedToContinue = false; 
 			yield return new WaitForSeconds (.1f);
 			StartCoroutine (WaitForSpace ()); 
 			yield return new WaitForSeconds (.1f);
-			while (Vector3.Distance (s_player.transform.position, transform.position) < m_triggerDistance && m_spacePressed == false) {
+			while (Vector3.Distance (s_player.transform.position, transform.position) < m_triggerDistance && m_clickedToContinue == false) {
 
 
 				yield return new WaitForEndOfFrame ();
@@ -136,42 +135,46 @@ public class Shrine : MonoBehaviour {
 		//show explanation
 
 		TextManager.SetText ("");
+		m_examining = false;
 	}
 
 	private IEnumerator ExamineShrine(){
+		m_examining = true;
 		//While you are within range of the gameobject
 		bool finished = false;
-		m_spacePressed = false;
+		m_clickedToContinue = false;
 		//set onscreen text to first line
 
 
 		TextManager.SetText(m_shrinePoems[Random.Range(0,m_shrinePoems.Count)]);
-		m_spacePressed = false; 
+		m_clickedToContinue = false; 
 		yield return new WaitForSeconds (.1f);
 		StartCoroutine (WaitForSpace());
 		yield return new WaitForSeconds (.1f);
 		//Wait for player to respond
 		float t = 0.0f;
-		while( Vector3.Distance(s_player.transform.position, transform.position) < m_triggerDistance && t < c_baseReadingTime && m_spacePressed == false){
+		while( Vector3.Distance(s_player.transform.position, transform.position) < m_triggerDistance && t < c_baseReadingTime && m_clickedToContinue == false){
 			t += Time.deltaTime;
 			yield return new WaitForEndOfFrame ();
 		}
-
-		TextManager.AddText (s_spaceToContinue);
+		if (Vector3.Distance (s_player.transform.position, transform.position) < m_triggerDistance) {
+			TextManager.AddText (s_clickToContinue);
+		}
 
 		//wait for player to respond
-		while( Vector3.Distance(s_player.transform.position, transform.position) < m_triggerDistance && m_spacePressed == false ){
+		while( Vector3.Distance(s_player.transform.position, transform.position) < m_triggerDistance && m_clickedToContinue == false ){
 
 
 			yield return new WaitForEndOfFrame ();
 		}
-
-		TextManager.SetText(m_shrineExplanation);
-		m_spacePressed = false; 
+		if (Vector3.Distance (s_player.transform.position, transform.position) < m_triggerDistance) {
+			TextManager.SetText (m_shrineExplanation);
+		}
+		m_clickedToContinue = false; 
 		yield return new WaitForSeconds (.1f);
 		StartCoroutine (WaitForSpace()); 
 		yield return new WaitForSeconds (.1f);
-		while( Vector3.Distance(s_player.transform.position, transform.position) < m_triggerDistance && m_spacePressed == false ){
+		while( Vector3.Distance(s_player.transform.position, transform.position) < m_triggerDistance && m_clickedToContinue == false ){
 
 
 			yield return new WaitForEndOfFrame ();
@@ -179,6 +182,7 @@ public class Shrine : MonoBehaviour {
 		//show explanation
 
 		TextManager.SetText ("");
+		m_examining = false;
 	}
 
 	[SerializeField]private float m_activeTime = 5.0f;
@@ -234,10 +238,15 @@ public class Shrine : MonoBehaviour {
 
 	void OnMouseDown(){
 		if (s_phase == Phase.Day) {
-			if (m_excavationStatus == ExcavationStatus.Excavated) {
-				StartCoroutine (ExamineShrine ());
+
+			if (m_examining == false) {
+				if (m_excavationStatus == ExcavationStatus.Excavated) {
+					StartCoroutine (ExamineShrine ());
+				} else {
+					StartCoroutine (ExcavateShrine ());
+				}
 			} else {
-				StartCoroutine (ExcavateShrine ());
+				m_clickedToContinue = true;
 			}
 		}
 	}
