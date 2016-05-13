@@ -77,7 +77,7 @@ public class CharacterInput : MonoBehaviour {
 
 					float angle = Vector3.Angle (transform.up * -1, directionToTarget);
 
-					if (Mathf.Abs (angle) < 45.0f) {
+					if (Mathf.Abs (angle) < 45.0f && col.tag == "Player") {
 
 
 						Debug.Log ("Object is in front of the player:" + angle);

@@ -2315,6 +2315,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_maxHealth: 100
   m_healthText: {fileID: 1143733900}
+--- !u!1001 &1148250577
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 446282, guid: 9524644e9b77d3e469554e7e551db255, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.085
+      objectReference: {fileID: 0}
+    - target: {fileID: 446282, guid: 9524644e9b77d3e469554e7e551db255, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.551
+      objectReference: {fileID: 0}
+    - target: {fileID: 446282, guid: 9524644e9b77d3e469554e7e551db255, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 446282, guid: 9524644e9b77d3e469554e7e551db255, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 446282, guid: 9524644e9b77d3e469554e7e551db255, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 446282, guid: 9524644e9b77d3e469554e7e551db255, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 446282, guid: 9524644e9b77d3e469554e7e551db255, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 446282, guid: 9524644e9b77d3e469554e7e551db255, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 9524644e9b77d3e469554e7e551db255, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1716403986
 GameObject:
   m_ObjectHideFlags: 0
@@ -2495,7 +2537,7 @@ GameObject:
   - 61: {fileID: 2056300937}
   - 50: {fileID: 2056300934}
   m_Layer: 0
-  m_Name: Shrine
+  m_Name: StartingBuriedMoveableHealingHurtingShrine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2514,12 +2556,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_excavationStatus: 0
   m_type: 0
+  m_negativeEffect: 0
   m_shrineExplanation: '[temp] shrine explanation'
   m_shrinePoems:
   - '[temp] shrine poem 1'
   - '[temp] shrine poem 2'
   - '[temp] shrine poem 3'
   m_excavationTime: 3
+  m_rb: {fileID: 2056300934}
   m_activeTime: 5
   m_particleSystem: {fileID: 773614397}
   m_effectiveness: 1
@@ -2580,7 +2624,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2056300931}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.085, y: 2.551, z: 0}
+  m_LocalPosition: {x: 4.63, y: 2.551, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1111779294}

@@ -3,8 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class Shrine : MonoBehaviour {
-	public enum ShrineType{
+	public enum ShrineTypePositiveEffect{
 		Healing
+	}
+
+	public enum ShrineTypeNegativeEffect{
+		Hurting,
+		None
 	}
 
 	public enum ExcavationStatus{
@@ -20,7 +25,8 @@ public class Shrine : MonoBehaviour {
 	[SerializeField]private ExcavationStatus m_excavationStatus = ExcavationStatus.Excavated;
 
 
-	[SerializeField]private ShrineType m_type;
+	[SerializeField]private ShrineTypePositiveEffect m_type;
+	[SerializeField]private ShrineTypeNegativeEffect m_negativeEffect;
 
 	[SerializeField]private string m_shrineExplanation;
 
@@ -28,16 +34,20 @@ public class Shrine : MonoBehaviour {
 
 	[SerializeField]private float m_excavationTime = 3.0f;
 
+	[SerializeField]Rigidbody2D m_rb;
+
 	private static Phase s_phase;
 
 	private const float c_baseReadingTime = 7.0f;
+
+
 
 	private static GameObject s_player;
 
 	private bool m_spacePressed = false;
 
-	private const string s_spaceToExcavate = "Press space to excavate statue.";
-	private const string s_spaceToContinue = "Press space to continue.";
+	private const string s_spaceToExcavate = " Press f to excavate statue.";
+	private const string s_spaceToContinue = " Press f to continue.";
 
 	private static float m_triggerDistance = 3.0f;
 
@@ -67,7 +77,7 @@ public class Shrine : MonoBehaviour {
 		yield return new WaitForEndOfFrame ();
 		m_spacePressed = false;
 		yield return new WaitForEndOfFrame ();
-		while (Input.GetKey (KeyCode.Space) == false && Input.GetKeyDown (KeyCode.Space) == false) {
+		while (Input.GetKey (KeyCode.F) == false && Input.GetKeyDown (KeyCode.F) == false) {
 			Debug.Log ("Waiting for space");
 			yield return new WaitForEndOfFrame ();
 		}
@@ -107,6 +117,8 @@ public class Shrine : MonoBehaviour {
 			yield return new WaitForSeconds (m_excavationTime);
 			CharacterInput.UnImmobilizeCharacter ();
 
+			m_excavationStatus = ExcavationStatus.Excavated;
+			m_rb.isKinematic = false;
 			TextManager.SetText (m_shrineExplanation);
 			m_spacePressed = false; 
 			yield return new WaitForSeconds (.1f);
@@ -120,7 +132,6 @@ public class Shrine : MonoBehaviour {
 		}
 		//show explanation
 
-		m_excavationStatus = ExcavationStatus.Excavated;
 
 		//show explanation
 
@@ -192,11 +203,21 @@ public class Shrine : MonoBehaviour {
 	private void DoEffect(float dt){
 		float dist = Vector3.Distance (s_player.transform.position, transform.position);
 		switch (m_type) {
-		case ShrineType.Healing:
+		case ShrineTypePositiveEffect.Healing:
 			//See if the player is close enough
 			if( dist < m_triggerDistance){
 				//if he is heal him as a function of time and effectiveness and distance
 				Health.Heal((1 + m_triggerDistance - dist) * m_effectiveness * dt);
+			}
+			break;
+		}
+
+		switch (m_negativeEffect) {
+		case ShrineTypeNegativeEffect.Hurting:
+			//See if the player is close enough
+			if (dist < m_triggerDistance) {
+				//if he is heal him as a function of time and effectiveness and distance
+				Health.TakeDamage ((1 + m_triggerDistance - dist) * m_effectiveness * dt);
 			}
 			break;
 		}
