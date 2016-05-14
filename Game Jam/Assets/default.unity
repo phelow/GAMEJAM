@@ -126,7 +126,7 @@ Transform:
   m_LocalScale: {x: 62.187508, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
 --- !u!1 &167400024
 GameObject:
   m_ObjectHideFlags: 0
@@ -1647,6 +1647,15 @@ Prefab:
     - target: {fileID: 425032, guid: d4b75b5dd8895d841bfee638ec2617f7, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 21285024, guid: d4b75b5dd8895d841bfee638ec2617f7, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ca30eadef2bffe7458b34f9ab257fbb5,
+        type: 3}
+    - target: {fileID: 21211508, guid: d4b75b5dd8895d841bfee638ec2617f7, type: 2}
+      propertyPath: m_SortingOrder
+      value: 155
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d4b75b5dd8895d841bfee638ec2617f7, type: 2}

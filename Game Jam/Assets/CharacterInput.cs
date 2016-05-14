@@ -28,6 +28,7 @@ public class CharacterInput : MonoBehaviour {
 
 	[SerializeField]private float m_timeBetweenAttacks = 1.0f;
 	[SerializeField]private float m_meleeRange = 1.0f;
+	[SerializeField]private float m_meleePower = 20.0f;
 	[SerializeField]private float m_meleeDamage = 1.0f;
 
 	[SerializeField]private Animator m_animator;
@@ -40,6 +41,11 @@ public class CharacterInput : MonoBehaviour {
 	[SerializeField]private AudioClip m_unearth;
 
 	[SerializeField]private AudioClip m_playerTakeDamage;
+
+	[SerializeField]private SpriteRenderer m_attackSpriteRenderer;
+	[SerializeField]private SpriteRenderer m_medallionSpriteRenderer;
+	[SerializeField]private Sprite m_medallion;
+	[SerializeField]private Sprite m_attack;
 
 
 	private float m_timeSinceLastAttack;
@@ -71,6 +77,10 @@ public class CharacterInput : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+		m_attackSpriteRenderer.enabled = false;
+
+		m_medallionSpriteRenderer.enabled = false;
 		s_instance = this;
 		StartCoroutine (PlayerInput());
 		StartNight ();
@@ -84,6 +94,20 @@ public class CharacterInput : MonoBehaviour {
 	public static void SetWeaponForLevel(GameMaster.ItemsEnabled master){
 		Debug.Log (s_instance.m_itemsEnabled);
 		s_instance.m_itemsEnabled = master;
+	}
+
+	private IEnumerator ShowMelee(){
+		m_attackSpriteRenderer.enabled = true;
+		yield return new WaitForSeconds(.3f);
+		m_attackSpriteRenderer.enabled = false;
+
+	}
+
+	private IEnumerator ShowMedallion(){
+		m_medallionSpriteRenderer.enabled = true;
+		yield return new WaitForSeconds(.3f);
+		m_medallionSpriteRenderer.enabled = false;
+
 	}
 
 	void Update(){
@@ -102,11 +126,11 @@ public class CharacterInput : MonoBehaviour {
 
 			}
 			if (Input.GetKey (KeyCode.Mouse1) && m_timeSinceLastAttack < 0.0f && m_itemsEnabled == GameMaster.ItemsEnabled.MedallionAndStaff) {
+				StartCoroutine (ShowMelee ());
 				m_timeSinceLastAttack = m_timeBetweenAttacks;
 				m_timeSinceLastAttack = m_timeBetweenAttacks;
 				//Use the amulet
 				m_curPower -= Time.deltaTime * m_drainRate;
-
 				m_as.PlayOneShot (m_melee);
 				Collider2D[] hitColliders = Physics2D.OverlapCircleAll (transform.position, m_meleeRange);
 				Debug.Log (hitColliders.Length);
@@ -126,14 +150,16 @@ public class CharacterInput : MonoBehaviour {
 						//then push them away from the player.'
 						Rigidbody2D rb = col.GetComponent<Rigidbody2D> ();
 						if (rb) {
-							rb.AddForce (transform.up * m_amuletPower * Mathf.Lerp (m_amuletMinStrength, m_amuletMaxStrength, m_curPower / m_maxPower));
+							Debug.Log ("Adding force to the rigidbody");
+							rb.AddForce (transform.up * m_meleePower * -1);
 						}
 					}
 
 				}
 			
 			}
-			if (Input.GetKey (KeyCode.Space) && m_curPower > 0.0f && m_timeSinceLastAttack < 0.0f && (m_itemsEnabled == GameMaster.ItemsEnabled.MedallionAndStaff && m_itemsEnabled == GameMaster.ItemsEnabled.MedallionOnly)) {
+			if (Input.GetKey (KeyCode.Space) && m_curPower > 0.0f && m_timeSinceLastAttack < 0.0f && (m_itemsEnabled == GameMaster.ItemsEnabled.MedallionAndStaff || m_itemsEnabled == GameMaster.ItemsEnabled.MedallionOnly)) {
+				StartCoroutine (ShowMedallion ());
 				m_timeSinceLastAttack = m_timeBetweenAttacks;
 				//Use the amulet
 				m_curPower -= Time.deltaTime * m_drainRate;
