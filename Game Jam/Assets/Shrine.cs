@@ -328,6 +328,8 @@ public class Shrine : MonoBehaviour {
 			DoEffect (dt);
 			yield return new WaitForEndOfFrame ();
 		}
+
+		CharacterInput.LerpColor (Color.white, Color.white,1.0f);
 		CharacterInput.ResetFireRate ();
 		CharacterInput.ResetSpeed ();
 		Projectile.ResetDamageMultiplier ();
@@ -336,6 +338,7 @@ public class Shrine : MonoBehaviour {
 
 	}
 	private void DoEffect(float dt){
+		Debug.Log ("DO effect");
 		float dist = Vector3.Distance (s_player.transform.position, transform.position);
 		switch (m_type) {
 		case ShrineTypePositiveEffect.Healing:
@@ -414,13 +417,20 @@ public class Shrine : MonoBehaviour {
 	public static bool IsDay(){
 		return s_phase == Phase.Day;
 	}
-
+	[SerializeField] private float m_cooldownTime = 30.0f;
+	bool enabled = true;
 	public void TurnOn(Collider2D col){
-		if(m_excavationStatus == ExcavationStatus.Excavated){
+		if(m_excavationStatus == ExcavationStatus.Excavated && enabled){
+			enabled = false;
+			StartCoroutine (Reenable ());
 			StartCoroutine (ShrineActive ());
 
-			Destroy (col);
 		}
+	}
+
+	private IEnumerator Reenable(){
+		yield return new WaitForSeconds (m_cooldownTime);
+		enabled = true;
 	}
 
 	void OnMouseDown(){
