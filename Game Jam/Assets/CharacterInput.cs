@@ -7,6 +7,8 @@ public class CharacterInput : MonoBehaviour {
 	private static CharacterInput s_instance;
 
 	[SerializeField]private float _speed;
+	[SerializeField]private float _defaultSpeed;
+	[SerializeField]private float m_defaultFireRate;
 	[SerializeField]private float _projectilePower = 10.0f;
 	[SerializeField]private float _meleePower = 10.0f;
 
@@ -107,6 +109,19 @@ public class CharacterInput : MonoBehaviour {
 	public static void SetFireRate(float fireRate){
 		s_instance.m_timeBetweenAttacks = fireRate;
 		Debug.Log ("Setting fire rate to: " + fireRate);
+	}
+
+	public static void SetMovementSpeed(float movementSpeed){
+		s_instance._speed = movementSpeed;
+		Debug.Log ("Setting movement speed: " + movementSpeed);
+	}
+
+	public static void ResetFireRate(){
+		s_instance.m_timeBetweenAttacks = s_instance.m_defaultFireRate;
+	}
+
+	public static void ResetSpeed(){
+		s_instance._speed = s_instance._defaultSpeed;
 	}
 
 	private IEnumerator PlayerInput(){

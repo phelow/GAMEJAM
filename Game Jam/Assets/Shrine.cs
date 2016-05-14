@@ -5,7 +5,8 @@ using System.Collections.Generic;
 public class Shrine : MonoBehaviour {
 	public enum ShrineTypePositiveEffect{
 		Healing,
-		FireRate
+		FireRate,
+		PlayerMovementIncrease
 	}
 
 	public enum ShrineTypeNegativeEffect{
@@ -38,6 +39,8 @@ public class Shrine : MonoBehaviour {
 
 	[SerializeField]private List<string> m_shrinePoems;
 
+	[SerializeField]private float m_minPlayerMoveSpeed = 1.0f;
+	[SerializeField]private float m_maxPlayerMoveSpeed = 1.0f;
 	[SerializeField]private float m_excavationTime = 3.0f;
 
 	[SerializeField]Rigidbody2D m_rb;
@@ -250,7 +253,8 @@ public class Shrine : MonoBehaviour {
 			DoEffect (dt);
 			yield return new WaitForEndOfFrame ();
 		}
-		CharacterInput.SetFireRate (1.0f);
+		CharacterInput.ResetFireRate ();
+		CharacterInput.ResetSpeed ();
 		m_particleSystem.enableEmission = false;
 
 
@@ -271,7 +275,13 @@ public class Shrine : MonoBehaviour {
 			//See if the player is close enough
 			if (dist < m_triggerDistance) {
 				//if he is heal him as a function of time and effectiveness and distance
-				CharacterInput.SetFireRate (Mathf.Lerp (m_minFireRate, m_maxFireRate, (1 + m_triggerDistance - dist) * m_effectiveness));
+				CharacterInput.SetFireRate (Mathf.Lerp (m_minFireRate, m_maxFireRate, (1 + m_triggerDistance - dist)));
+			}
+			break;
+		case ShrineTypePositiveEffect.PlayerMovementIncrease:
+			if (dist < m_triggerDistance) {
+				//if he is heal him as a function of time and effectiveness and distance
+				CharacterInput.SetMovementSpeed (Mathf.Lerp (m_minPlayerMoveSpeed, m_maxPlayerMoveSpeed, (1 + m_triggerDistance - dist)));
 			}
 			break;
 		}

@@ -384,6 +384,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rb: {fileID: 467363291}
   _speed: 1
+  _defaultSpeed: 1
+  m_defaultFireRate: 1
   _projectilePower: 10
   _meleePower: 10
   _projectile: {fileID: 160562, guid: b74cfa51ef225d74fa71e3868ffd13c3, type: 2}
@@ -2358,6 +2360,48 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9524644e9b77d3e469554e7e551db255, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &1262964677
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 406560, guid: c11738a5840130f47a6caebbcce32d7e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -5.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 406560, guid: c11738a5840130f47a6caebbcce32d7e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -5.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 406560, guid: c11738a5840130f47a6caebbcce32d7e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 406560, guid: c11738a5840130f47a6caebbcce32d7e, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 406560, guid: c11738a5840130f47a6caebbcce32d7e, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 406560, guid: c11738a5840130f47a6caebbcce32d7e, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 406560, guid: c11738a5840130f47a6caebbcce32d7e, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 406560, guid: c11738a5840130f47a6caebbcce32d7e, type: 2}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: c11738a5840130f47a6caebbcce32d7e, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1716403986
 GameObject:
   m_ObjectHideFlags: 0
@@ -2606,6 +2650,8 @@ MonoBehaviour:
   - '[temp] shrine poem 1'
   - '[temp] shrine poem 2'
   - '[temp] shrine poem 3'
+  m_minPlayerMoveSpeed: 1
+  m_maxPlayerMoveSpeed: 1
   m_excavationTime: 3
   m_rb: {fileID: 2056300934}
   m_minSpawnTime: 1
