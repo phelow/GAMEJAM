@@ -9,6 +9,7 @@ public class Shrine : MonoBehaviour {
 
 	public enum ShrineTypeNegativeEffect{
 		Hurting,
+		Spawner,
 		None
 	}
 
@@ -21,6 +22,10 @@ public class Shrine : MonoBehaviour {
 		Night,
 		Day
 	}
+
+	private static Shrine s_instance;
+
+	[SerializeField]private GameObject m_spawnable;
 
 	[SerializeField]private ExcavationStatus m_excavationStatus = ExcavationStatus.Excavated;
 
@@ -35,6 +40,9 @@ public class Shrine : MonoBehaviour {
 	[SerializeField]private float m_excavationTime = 3.0f;
 
 	[SerializeField]Rigidbody2D m_rb;
+
+	[SerializeField]private float m_minSpawnTime = 1.0f;
+	[SerializeField]private float m_maxSpawnTime = 5.0f;
 
 	private static Phase s_phase;
 
@@ -52,27 +60,48 @@ public class Shrine : MonoBehaviour {
 
 	private static float m_triggerDistance = 3.0f;
 
+	private IEnumerator m_spawnReference;
+
+
+
 	// Use this for initialization
 	void Start () {
+		s_instance = this;
 		m_particleSystem.enableEmission = false;
+		m_spawnReference = SpawnRoutine ();
 		if (s_player == null) {
 			s_player = GameObject.FindGameObjectWithTag ("Player");
 		}
 	}
-	
+
+	private IEnumerator SpawnRoutine(){
+		//todo
+		while (true) {
+			GameObject.Instantiate (m_spawnable);
+			yield return new WaitForSeconds (Random.Range (m_minSpawnTime, m_maxSpawnTime));
+		}
+	}
+
 	// Update is called once per frame
 	void Update () {
-		
 	}
 
 	public static void SetNight(){
 		s_phase = Phase.Night;
+		if (s_instance.m_negativeEffect == ShrineTypeNegativeEffect.Spawner) {
+			s_instance.StartCoroutine (s_instance.m_spawnReference);
+
+
+		}
+
 	}
 
 
 	public static void SetDay(){
 		s_phase = Phase.Day;
+		s_instance.StopCoroutine (s_instance.m_spawnReference);
 	}
+
 
 	private IEnumerator WaitForSpace(){
 		yield return new WaitForEndOfFrame ();
