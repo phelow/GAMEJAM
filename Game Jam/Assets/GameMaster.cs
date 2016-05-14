@@ -3,9 +3,20 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class GameMaster : MonoBehaviour {
+	public enum ItemsEnabled{
+		None,
+		MedallionOnly,
+		MedallionAndStaff
+	}
+
+
 	[SerializeField]private float m_dayLength = 10.0f;
 	[SerializeField]private float m_nightLength = 10.0f;
 	[SerializeField]private Text m_timeText;
+
+	[SerializeField]private int[] m_dayLengthForLevels;
+	[SerializeField]private int[] m_nightLengthForLevels;
+	[SerializeField]private ItemsEnabled[] m_itemsEnabledForLevels;
 
 	// Use this for initialization
 	void Start () {
@@ -13,7 +24,13 @@ public class GameMaster : MonoBehaviour {
 	}
 
 	private IEnumerator DayNightCycle(){
-		while (true) {
+		for(int i = 0; i < m_dayLengthForLevels.Length; i++){
+			m_dayLength = m_dayLengthForLevels [i];
+			m_nightLength = m_nightLengthForLevels [i];
+
+			CharacterInput.SetWeaponForLevel (m_itemsEnabledForLevels [i]);
+
+
 			//Set Daytime
 			Shrine.SetDay();
 
