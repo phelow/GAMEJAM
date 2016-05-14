@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour {
 
 	protected static GameObject s_player;
 
+	[SerializeField]protected SpriteRenderer m_spriteRenderer;
 	[SerializeField]protected Buff m_buff = Buff.Speed;
 	[SerializeField]protected Rigidbody2D m_rb;
 	[SerializeField]protected float m_speed = 1.0f;
@@ -30,9 +31,11 @@ public class Enemy : MonoBehaviour {
 	}
 
 	private IEnumerator SpeedBoost(float duration){
+		m_spriteRenderer.color = Color.yellow;
 		m_speed = m_buffedSpeed;
 		yield return new WaitForSeconds (duration);
 		m_speed = m_defaultSpeed;
+		m_spriteRenderer.color = Color.white;
 	}
 
 	public void BuffEnemy(Buff buff,float duration){
