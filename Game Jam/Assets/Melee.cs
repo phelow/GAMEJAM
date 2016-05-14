@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Melee : MonoBehaviour {
+public class Melee : Attack {
 	[SerializeField]Rigidbody2D _rb;
 
 	[SerializeField]private float _initialWait = 1.0f;
@@ -18,5 +18,11 @@ public class Melee : MonoBehaviour {
 
 		yield return new WaitForSeconds(_waitToDestroy);
 		Destroy (this.gameObject);
+	}
+
+	void OnCollisionEnter2D(Collision2D coll){
+		if (coll.gameObject.tag == "Enemy") {
+			coll.gameObject.GetComponent<Enemy> ().Damage (m_damage);
+		}
 	}
 }
