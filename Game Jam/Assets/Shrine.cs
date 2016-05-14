@@ -89,6 +89,13 @@ public class Shrine : MonoBehaviour {
 
 	[SerializeField]private bool m_activated = false;
 
+	[SerializeField]private List<Sprite> m_bottoms;
+	[SerializeField]private List<Sprite> m_bottomsBuried;
+	[SerializeField]private List<Sprite> m_tops;
+
+	[SerializeField]private SpriteRenderer m_topRenderer;
+	[SerializeField]private SpriteRenderer m_bottomRenderer;
+
 	private static Phase s_phase;
 
 	private const float c_baseReadingTime = 7.0f;
@@ -112,6 +119,9 @@ public class Shrine : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		m_bottomRenderer.sprite = m_bottomsBuried [(int)m_type];
+		m_topRenderer.sprite = m_tops [(int)m_negativeEffect];
+
 		s_instance = this;
 		try{
 			s_instance.m_spriteRenderer.color = Color.grey;
@@ -227,6 +237,8 @@ public class Shrine : MonoBehaviour {
 			CharacterInput.UnImmobilizeCharacter ();
 
 			m_excavationStatus = ExcavationStatus.Excavated;
+
+			m_bottomRenderer.sprite = m_bottoms [(int)m_type];
 			m_rb.isKinematic = false;
 			TextManager.SetText (m_shrineExplanation);
 			m_clickedToContinue = false; 
