@@ -32,13 +32,28 @@ public class CharacterInput : MonoBehaviour {
 
 	[SerializeField]private Animator m_animator;
 
+	[SerializeField]private AudioSource m_as;
+	[SerializeField]private AudioClip m_click;
+	[SerializeField]private AudioClip m_dig;
+	[SerializeField]private AudioClip m_magic;
+	[SerializeField]private AudioClip m_melee;
+	[SerializeField]private AudioClip m_unearth;
+
+
 	private float m_timeSinceLastAttack;
 	private GameMaster.ItemsEnabled m_itemsEnabled;
 
 	private static bool m_immobilized = false;
 
+
+	public static void PlayClickSoundEffect(){
+		s_instance.m_as.PlayOneShot (s_instance.m_click);
+	}
+
 	public static void ImmobilizeCharacter (){
 		s_instance.m_animator.CrossFade ("Digging", 0.0f);
+		s_instance.m_as.PlayOneShot (s_instance.m_dig);
+
 		m_immobilized = true;
 		Debug.Log ("Character has been immobilized");
 		s_instance._rb.velocity = Vector2.zero;
@@ -76,6 +91,10 @@ public class CharacterInput : MonoBehaviour {
 				Vector3 sp = Camera.main.WorldToScreenPoint (transform.position);
 				Vector3 dir = (Input.mousePosition - sp).normalized;
 				projectile.GetComponent<Rigidbody2D> ().AddForce (dir * _projectilePower);
+
+
+				m_as.PlayOneShot (m_magic);
+
 			}
 			if (Input.GetKey (KeyCode.Mouse1) && m_timeSinceLastAttack < 0.0f && m_itemsEnabled == GameMaster.ItemsEnabled.MedallionAndStaff) {
 				m_timeSinceLastAttack = m_timeBetweenAttacks;
@@ -83,6 +102,7 @@ public class CharacterInput : MonoBehaviour {
 				//Use the amulet
 				m_curPower -= Time.deltaTime * m_drainRate;
 
+				m_as.PlayOneShot (m_melee);
 				Collider2D[] hitColliders = Physics2D.OverlapCircleAll (transform.position, m_meleeRange);
 				Debug.Log (hitColliders.Length);
 				foreach (Collider2D col in hitColliders) {
@@ -113,6 +133,7 @@ public class CharacterInput : MonoBehaviour {
 				//Use the amulet
 				m_curPower -= Time.deltaTime * m_drainRate;
 
+				m_as.PlayOneShot (m_magic);
 				Collider2D[] hitColliders = Physics2D.OverlapCircleAll (transform.position, 100.0f);
 				Debug.Log (hitColliders.Length);
 				foreach (Collider2D col in hitColliders) {

@@ -414,6 +414,8 @@ public class Shrine : MonoBehaviour {
 
 	void OnMouseDown(){
 		if (s_instance.m_activated) {
+			CharacterInput.PlayClickSoundEffect ();
+
 			if (s_phase == Phase.Day) {
 
 				if (m_examining == false) {
