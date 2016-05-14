@@ -170,6 +170,7 @@ public class Shrine : MonoBehaviour {
 
 	public static void SetNight(){ //needs to be called for every individual gameobject
 		s_phase = Phase.Night;
+		s_instance.m_spawnReference = null;
 		/*if (s_instance.m_negativeEffect == ShrineTypeNegativeEffect.Spawner) {
 			Debug.Log ("Starting spawning coroutine");
 			s_instance.StartCoroutine (s_instance.m_spawnReference);
