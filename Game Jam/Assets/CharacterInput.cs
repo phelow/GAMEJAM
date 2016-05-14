@@ -39,6 +39,7 @@ public class CharacterInput : MonoBehaviour {
 	[SerializeField]private AudioClip m_magic;
 	[SerializeField]private AudioClip m_melee;
 	[SerializeField]private AudioClip m_unearth;
+	[SerializeField]private AudioClip m_amulet;
 
 	[SerializeField]private AudioClip m_playerTakeDamage;
 
@@ -170,7 +171,7 @@ public class CharacterInput : MonoBehaviour {
 				//Use the amulet
 				m_curPower -= Time.deltaTime * m_drainRate;
 
-				m_as.PlayOneShot (m_magic);
+				m_as.PlayOneShot (m_amulet);
 				Collider2D[] hitColliders = Physics2D.OverlapCircleAll (transform.position, 100.0f);
 				Debug.Log (hitColliders.Length);
 				foreach (Collider2D col in hitColliders) {

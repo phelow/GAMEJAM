@@ -45,6 +45,7 @@ public class GameMaster : MonoBehaviour {
 			//Set Daytime
 			Health.Heal(100);
 			Shrine.SetDay();
+			Music.SetDay ();
 			switch (day) {
 			case 0:
 				DialogSystem.Main.SetLevel (LevelEnum.Day1);
@@ -81,6 +82,7 @@ public class GameMaster : MonoBehaviour {
 
 			//Set nightTime
 			Shrine.SetNight();
+			Music.SetNight ();
 			switch (day) {
 			case 0:
 				DialogSystem.Main.SetLevel (LevelEnum.Night1);

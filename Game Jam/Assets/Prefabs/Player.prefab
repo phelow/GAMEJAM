@@ -161,7 +161,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b93e09923d0ad054bbbbbed13e5da4ee, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.151
+  m_Volume: 0.965
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -265,7 +265,7 @@ MonoBehaviour:
   m_drainRate: 10
   m_amuletRadius: 10
   m_amuletAngle: 90
-  m_amuletPower: 10
+  m_amuletPower: 1000
   m_amuletMinStrength: 1
   m_amuletMaxStrength: 5
   m_timeBetweenAttacks: 0.2
@@ -275,11 +275,12 @@ MonoBehaviour:
   m_animator: {fileID: 9585332}
   m_as: {fileID: 8259370}
   m_click: {fileID: 8300000, guid: b93e09923d0ad054bbbbbed13e5da4ee, type: 3}
-  m_dig: {fileID: 8300000, guid: 06a80da40478bed4581578da038e5116, type: 3}
-  m_magic: {fileID: 8300000, guid: bc3e58e6becffbd46bc80342aa245807, type: 3}
-  m_melee: {fileID: 8300000, guid: 967826d21b66ca041a40e8573e377cfa, type: 3}
+  m_dig: {fileID: 8300000, guid: 1c91b87a74ebe084bbb67c14721d8657, type: 3}
+  m_magic: {fileID: 8300000, guid: 354029c87c4234144be07c3407c22fbd, type: 3}
+  m_melee: {fileID: 8300000, guid: a9976593dcc6b8f46bdfb398a7d0e896, type: 3}
   m_unearth: {fileID: 8300000, guid: 124fe22fce562f64a81b0ccbdb488a74, type: 3}
-  m_playerTakeDamage: {fileID: 8300000, guid: fb989230200ee5c46956d0c207f581b1, type: 3}
+  m_amulet: {fileID: 8300000, guid: 290766543b35d4f4a884d576b6ca595c, type: 3}
+  m_playerTakeDamage: {fileID: 8300000, guid: b6712dcb3c56a1441baf5aa4e9bf2fd9, type: 3}
   m_attackSpriteRenderer: {fileID: 21285024}
   m_medallionSpriteRenderer: {fileID: 21211508}
   m_characterSpriteRenderer: {fileID: 21279492}

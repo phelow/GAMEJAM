@@ -591,6 +591,7 @@ GameObject:
   - 81: {fileID: 454696702}
   - 114: {fileID: 454696707}
   - 82: {fileID: 454696708}
+  - 114: {fileID: 454696709}
   m_Layer: 9
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -690,7 +691,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   Priority: 128
@@ -751,6 +752,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &454696709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 454696701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15b262d0c24416a4a8acfcc1122f221d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_as: {fileID: 454696708}
+  m_night: {fileID: 8300000, guid: cdb8b476ad137de49a1eeca773205651, type: 3}
+  m_day: {fileID: 8300000, guid: 87c804ab2d68f8240b6c521513276243, type: 3}
 --- !u!1001 &454887238
 Prefab:
   m_ObjectHideFlags: 0
