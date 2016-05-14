@@ -84,6 +84,10 @@ public class Shrine : MonoBehaviour {
 	[SerializeField]private float m_minPlayerDamageDebuffTakenMult = 2.0f;
 	[SerializeField]private float m_maxPlayerDamageDebuffTakenMult = 10.0f;
 
+	[SerializeField]private int m_spawnOnLevel = 0;
+	[SerializeField]private int m_dissappearOnLevel = 5;
+
+	[SerializeField]private bool m_activated = false;
 
 	private static Phase s_phase;
 
@@ -103,11 +107,19 @@ public class Shrine : MonoBehaviour {
 
 	private IEnumerator m_spawnReference;
 
+	[SerializeField]private SpriteRenderer m_spriteRenderer;
 
 
 	// Use this for initialization
 	void Start () {
 		s_instance = this;
+		try{
+			s_instance.m_spriteRenderer.color = Color.grey;
+		}
+		catch{
+			Debug.LogError ("Assign sprite renderer");
+		}
+
 		m_particleSystem.enableEmission = false;
 		if (s_player == null) {
 			s_player = GameObject.FindGameObjectWithTag ("Player");
@@ -125,15 +137,17 @@ public class Shrine : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (s_phase == Phase.Night) {
-			if (m_spawnReference == null && m_negativeEffect == ShrineTypeNegativeEffect.Spawner && m_excavationStatus == ExcavationStatus.Excavated) {
-				m_spawnReference = SpawnRoutine ();
-				StartCoroutine (m_spawnReference);
-			}
-		} else {
-			if (m_spawnReference != null && m_negativeEffect == ShrineTypeNegativeEffect.Spawner) {
-				StopCoroutine (m_spawnReference);
-				m_spawnReference = null;
+		if (s_instance.m_activated) {
+			if (s_phase == Phase.Night) {
+				if (m_spawnReference == null && m_negativeEffect == ShrineTypeNegativeEffect.Spawner && m_excavationStatus == ExcavationStatus.Excavated) {
+					m_spawnReference = SpawnRoutine ();
+					StartCoroutine (m_spawnReference);
+				}
+			} else {
+				if (m_spawnReference != null && m_negativeEffect == ShrineTypeNegativeEffect.Spawner) {
+					StopCoroutine (m_spawnReference);
+					m_spawnReference = null;
+				}
 			}
 		}
 	}
@@ -153,6 +167,18 @@ public class Shrine : MonoBehaviour {
 	public static void SetDay(){
 		s_phase = Phase.Day;
 
+		if (GameMaster.day == s_instance.m_spawnOnLevel) {
+			//activate
+			try{
+				s_instance.m_spriteRenderer.color = Color.white;
+			}
+			catch{
+				Debug.LogError ("Assign sprite renderer");
+			}
+			s_instance.m_activated = true;
+		} else if (GameMaster.day == s_instance.m_dissappearOnLevel) {
+			Destroy (s_instance.gameObject);
+		}
 
 		//s_instance.StopCoroutine (s_instance.m_spawnReference);
 	}
@@ -364,23 +390,27 @@ public class Shrine : MonoBehaviour {
 		return s_phase == Phase.Day;
 	}
 
-	public void TurnOn(){
+	public void TurnOn(Collider2D col){
 		if(m_excavationStatus == ExcavationStatus.Excavated){
 			StartCoroutine (ShrineActive ());
+
+			Destroy (col);
 		}
 	}
 
 	void OnMouseDown(){
-		if (s_phase == Phase.Day) {
+		if (s_instance.m_activated) {
+			if (s_phase == Phase.Day) {
 
-			if (m_examining == false) {
-				if (m_excavationStatus == ExcavationStatus.Excavated) {
-					StartCoroutine (ExamineShrine ());
+				if (m_examining == false) {
+					if (m_excavationStatus == ExcavationStatus.Excavated) {
+						StartCoroutine (ExamineShrine ());
+					} else {
+						StartCoroutine (ExcavateShrine ());
+					}
 				} else {
-					StartCoroutine (ExcavateShrine ());
+					m_clickedToContinue = true;
 				}
-			} else {
-				m_clickedToContinue = true;
 			}
 		}
 	}

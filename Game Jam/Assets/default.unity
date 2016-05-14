@@ -249,6 +249,9 @@ MonoBehaviour:
   m_dayLength: 1
   m_nightLength: 100
   m_timeText: {fileID: 1689415098}
+  m_dayLengthForLevels: 
+  m_nightLengthForLevels: 
+  m_itemsEnabledForLevels: 
 --- !u!4 &243381545
 Transform:
   m_ObjectHideFlags: 0
@@ -2996,6 +2999,10 @@ MonoBehaviour:
   m_maxPlayerDamageTakenMult: 0.1
   m_minPlayerDamageDebuffTakenMult: 2
   m_maxPlayerDamageDebuffTakenMult: 10
+  m_spawnOnLevel: 0
+  m_dissappearOnLevel: 5
+  m_activated: 0
+  m_spriteRenderer: {fileID: 0}
   m_activeTime: 5
   m_particleSystem: {fileID: 773614397}
   m_effectiveness: 1

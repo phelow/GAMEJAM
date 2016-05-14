@@ -8,8 +8,7 @@ public class TriggerShrine : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other){
 		Debug.Log (9);
 		if (other.gameObject.tag == "Player" && Shrine.IsDay() == false) {
-			m_shrine.TurnOn ();
-			Destroy (m_collider);
+			m_shrine.TurnOn (m_collider);
 		}
 	}
 }
