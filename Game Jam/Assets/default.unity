@@ -674,7 +674,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 423356, guid: b432d7c8d09500b42b5ffe719d85240a, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 11402808, guid: b432d7c8d09500b42b5ffe719d85240a, type: 2}
       propertyPath: m_enemyProjectile
@@ -2583,7 +2583,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 449542, guid: 4931f3806f2344c4596df2a7b1a8b02b, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4931f3806f2344c4596df2a7b1a8b02b, type: 2}
@@ -2598,7 +2598,6 @@ GameObject:
   - 224: {fileID: 1689415101}
   - 222: {fileID: 1689415100}
   - 114: {fileID: 1689415098}
-  - 114: {fileID: 1689415099}
   m_Layer: 5
   m_Name: Text (2)
   m_TagString: Untagged
@@ -2639,19 +2638,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'Health: 100'
---- !u!114 &1689415099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1689415097}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18669c5f036fc444ba331add371d272a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_maxHealth: 100
-  m_healthText: {fileID: 1689415098}
 --- !u!222 &1689415100
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2908,6 +2894,11 @@ MonoBehaviour:
   m_spawnOnLevel: 0
   m_dissappearOnLevel: 5
   m_activated: 0
+  m_bottoms: []
+  m_bottomsBuried: []
+  m_tops: []
+  m_topRenderer: {fileID: 0}
+  m_bottomRenderer: {fileID: 0}
   m_spriteRenderer: {fileID: 0}
   m_activeTime: 5
   m_particleSystem: {fileID: 773614397}

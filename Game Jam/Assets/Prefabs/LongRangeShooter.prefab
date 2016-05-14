@@ -110,7 +110,7 @@ MonoBehaviour:
   m_spriteRenderer: {fileID: 0}
   m_buff: 1
   m_rb: {fileID: 5016828}
-  m_speed: 3
+  m_speed: 200
   m_defaultSpeed: 3
   m_maxHealth: 30
   m_curHealth: 0
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_startShootingRange: 20
   m_minBetweenShotTime: 4
   m_maxBetweenShotTime: 5
-  m_projectileSpeed: 100
+  m_projectileSpeed: 150
   m_enemyProjectile: {fileID: 114154, guid: 4931f3806f2344c4596df2a7b1a8b02b, type: 2}
 --- !u!1001 &100100000
 Prefab:
