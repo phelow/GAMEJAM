@@ -17,6 +17,7 @@ public class Melee : Attack {
 		_rb.velocity *= -1;
 
 		yield return new WaitForSeconds(_waitToDestroy);
+		CharacterInput.UnImmobilizeCharacter ();
 		Destroy (this.gameObject);
 	}
 

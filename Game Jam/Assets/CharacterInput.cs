@@ -24,6 +24,9 @@ public class CharacterInput : MonoBehaviour {
 	[SerializeField]private float m_amuletMinStrength = 1.0f;
 	[SerializeField]private float m_amuletMaxStrength = 5.0f;
 
+	[SerializeField]private float m_timeBetweenAttacks = 1.0f;
+	private float m_timeSinceLastAttack;
+
 	private static bool m_immobilized = false;
 
 	public static void ImmobilizeCharacter (){
@@ -50,23 +53,29 @@ public class CharacterInput : MonoBehaviour {
 	}
 
 	void Update(){
-		if (m_immobilized == false && Shrine.IsDay() == false) {
+		m_timeSinceLastAttack -= Time.deltaTime;
+		if (m_immobilized == false && Shrine.IsDay() == false && m_timeSinceLastAttack < 0.0f) {
 			if (Input.GetKeyDown (KeyCode.Mouse0)) {
+				m_timeSinceLastAttack = m_timeBetweenAttacks;
 				GameObject projectile = GameObject.Instantiate (_projectile);
 				projectile.transform.position = transform.position;
 				Vector3 sp = Camera.main.WorldToScreenPoint (transform.position);
 				Vector3 dir = (Input.mousePosition - sp).normalized;
 				projectile.GetComponent<Rigidbody2D> ().AddForce (dir * _projectilePower);
 			}
-			if (Input.GetKeyDown (KeyCode.Mouse1)) {
+			if (Input.GetKeyDown (KeyCode.Mouse1) && m_timeSinceLastAttack < 0.0f) {
+				ImmobilizeCharacter ();
+				m_timeSinceLastAttack = m_timeBetweenAttacks;
 				GameObject projectile = GameObject.Instantiate (_melee);
-				projectile.transform.position = transform.position;
+				projectile.transform.parent = this.transform;
+				projectile.transform.localPosition = Vector2.zero;
 				Vector3 sp = Camera.main.WorldToScreenPoint (transform.position);
 				Vector3 dir = (Input.mousePosition - sp).normalized;
 				projectile.GetComponent<Rigidbody2D> ().AddForce (dir * _meleePower);
 			
 			}
-			if (Input.GetKey (KeyCode.Space) && m_curPower > 0.0f) {
+			if (Input.GetKey (KeyCode.Space) && m_curPower > 0.0f && m_timeSinceLastAttack < 0.0f) {
+				m_timeSinceLastAttack = m_timeBetweenAttacks;
 				//Use the amulet
 				m_curPower -= Time.deltaTime * m_drainRate;
 

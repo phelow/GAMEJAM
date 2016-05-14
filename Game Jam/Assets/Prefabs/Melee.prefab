@@ -107,6 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c9935646af1b264d8c3c123b55e403e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_damage: 10
   _rb: {fileID: 5084666}
   _initialWait: 1
   _waitToDestroy: 1
