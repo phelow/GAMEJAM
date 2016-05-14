@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour {
 
 	protected static GameObject s_player;
 
+	[SerializeField]private GameObject m_deathAnnouncer;
 	[SerializeField]protected Animation m_animChoice;
 
 	[SerializeField]protected SpriteRenderer m_spriteRenderer;
@@ -111,7 +112,10 @@ public class Enemy : MonoBehaviour {
 		StartCoroutine (DamageEffect ());	
 		m_curHealth -= dam;
 		if (m_curHealth < 0.0f) {
+			GameObject go = GameObject.Instantiate (m_deathAnnouncer);
+			go.transform.position = transform.position;
 			Destroy (this.gameObject);
+
 		}
 	}
 

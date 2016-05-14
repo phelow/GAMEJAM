@@ -334,6 +334,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7f0b1048e62d453449eb6f469e52503a, type: 3}
   m_topRenderer: {fileID: 21226560}
   m_bottomRenderer: {fileID: 21237994}
+  m_unearthSound: {fileID: 8300000, guid: 124fe22fce562f64a81b0ccbdb488a74, type: 3}
   m_spriteRenderer: {fileID: 21289040}
   m_as: {fileID: 8230782}
   m_spawnclip: {fileID: 8300000, guid: 60b8627b92e81984fb298d03bff5b2c8, type: 3}
@@ -2010,6 +2011,10 @@ Prefab:
       propertyPath: m_spawnclip
       value: 
       objectReference: {fileID: 8300000, guid: 60b8627b92e81984fb298d03bff5b2c8, type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_unearthSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 124fe22fce562f64a81b0ccbdb488a74, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 194248}

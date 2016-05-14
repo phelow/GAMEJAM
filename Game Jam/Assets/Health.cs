@@ -31,6 +31,7 @@ public class Health : MonoBehaviour {
 	}
 
 	public static void TakeDamage(float amt){
+		CharacterInput.PlayPlayerTakeDamageSoundEffect();
 		s_instance.m_curHealth -= amt * m_damageMultiplier;
 		if (s_instance.m_curHealth < 0) {
 			Debug.Log ("You have died");

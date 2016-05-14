@@ -43,6 +43,7 @@ public class GameMaster : MonoBehaviour {
 
 
 			//Set Daytime
+			Health.Heal(100);
 			Shrine.SetDay();
 			foreach (SpriteRenderer sr in m_backgroundSpriteRenderer) {
 				sr.sprite = m_backgroundDaySprite;

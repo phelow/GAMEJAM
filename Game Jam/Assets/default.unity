@@ -557,6 +557,7 @@ MonoBehaviour:
   m_magic: {fileID: 8300000, guid: bc3e58e6becffbd46bc80342aa245807, type: 3}
   m_melee: {fileID: 8300000, guid: 967826d21b66ca041a40e8573e377cfa, type: 3}
   m_unearth: {fileID: 8300000, guid: 124fe22fce562f64a81b0ccbdb488a74, type: 3}
+  m_playerTakeDamage: {fileID: 8300000, guid: fb989230200ee5c46956d0c207f581b1, type: 3}
 --- !u!4 &350621964
 Transform:
   m_ObjectHideFlags: 0

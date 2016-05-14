@@ -96,6 +96,8 @@ public class Shrine : MonoBehaviour {
 	[SerializeField]private SpriteRenderer m_topRenderer;
 	[SerializeField]private SpriteRenderer m_bottomRenderer;
 
+	[SerializeField]private AudioClip m_unearthSound;
+
 	private static Phase s_phase;
 
 	private const float c_baseReadingTime = 7.0f;
@@ -239,6 +241,7 @@ public class Shrine : MonoBehaviour {
 			CharacterInput.UnImmobilizeCharacter ();
 
 			m_excavationStatus = ExcavationStatus.Excavated;
+			m_as.PlayOneShot (m_unearthSound);
 
 			m_bottomRenderer.sprite = m_bottoms [(int)m_type];
 			m_rb.isKinematic = false;

@@ -39,12 +39,17 @@ public class CharacterInput : MonoBehaviour {
 	[SerializeField]private AudioClip m_melee;
 	[SerializeField]private AudioClip m_unearth;
 
+	[SerializeField]private AudioClip m_playerTakeDamage;
+
 
 	private float m_timeSinceLastAttack;
 	private GameMaster.ItemsEnabled m_itemsEnabled;
 
 	private static bool m_immobilized = false;
 
+	public static void PlayPlayerTakeDamageSoundEffect(){
+		s_instance.m_as.PlayOneShot (s_instance.m_playerTakeDamage);
+	}
 
 	public static void PlayClickSoundEffect(){
 		s_instance.m_as.PlayOneShot (s_instance.m_click);
