@@ -286,9 +286,8 @@ MonoBehaviour:
   m_negativeEffect: 1
   m_shrineExplanation: '[temp] shrine explanation'
   m_shrinePoems:
-  - '[temp] shrine poem 1'
-  - '[temp] shrine poem 2'
-  - '[temp] shrine poem 3'
+  - Lo! Behold! The raging bull.
+  - Listen to the flutes play, their notes dancing like liquid silver.
   m_minPlayerMoveSpeed: 1
   m_maxPlayerMoveSpeed: 1
   m_minPlayerMoveDebuffSpeed: 0.5
@@ -1990,7 +1989,23 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_shrinePoems.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_shrinePoems.Array.data[2]
+      value: '[temp] shrine poem 3'
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_shrinePoems.Array.data[0]
+      value: Lo! Behold! The raging bull.
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_shrinePoems.Array.data[1]
+      value: Listen to the flutes play, their notes dancing like liquid silver.
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 110798}
