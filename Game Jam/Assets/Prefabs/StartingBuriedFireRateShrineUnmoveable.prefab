@@ -134,7 +134,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 190850}
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_IsKinematic: 1
@@ -203,12 +203,20 @@ MonoBehaviour:
   - '[temp] shrine poem 1'
   - '[temp] shrine poem 2'
   - '[temp] shrine poem 3'
+  m_minPlayerMoveSpeed: 1
+  m_maxPlayerMoveSpeed: 1
   m_excavationTime: 3
   m_rb: {fileID: 5024718}
   m_minSpawnTime: 1
   m_maxSpawnTime: 5
+  m_minFireRate: 1
+  m_maxFireRate: 0.1
   m_xSpawningOffset: 10
   m_ySpawningOffset: 10
+  m_minPlayerDamageMult: 1
+  m_maxPlayerDamageMult: 10
+  m_minPlayerDamageTakenMult: 1
+  m_maxPlayerDamageTakenMult: 0.1
   m_activeTime: 5
   m_particleSystem: {fileID: 19891916}
   m_effectiveness: 1

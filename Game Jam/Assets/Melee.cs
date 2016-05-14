@@ -4,7 +4,7 @@ using System.Collections;
 public class Melee : Attack {
 	[SerializeField]Rigidbody2D _rb;
 
-	[SerializeField]private float _initialWait = 1.0f;
+	[SerializeField]private float _initialWait = 0.0001f;
 	[SerializeField]private float _waitToDestroy = 1.0f;
 
 	// Use this for initialization
