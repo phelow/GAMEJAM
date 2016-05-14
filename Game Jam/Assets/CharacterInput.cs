@@ -59,10 +59,15 @@ public class CharacterInput : MonoBehaviour {
 		m_curPower = m_maxPower;
 	}
 
+	private GameMaster.ItemsEnabled m_itemsEnabled;
+	public static void SetWeaponForLevel(GameMaster.ItemsEnabled master){
+		s_instance.m_itemsEnabled = master;
+	}
+
 	void Update(){
 		m_timeSinceLastAttack -= Time.deltaTime;
 		if (m_immobilized == false && Shrine.IsDay() == false && m_timeSinceLastAttack < 0.0f) {
-			if (Input.GetKey(KeyCode.Mouse0)) {
+			if (Input.GetKey(KeyCode.Mouse0) && m_itemsEnabled == GameMaster.ItemsEnabled.MedallionAndStaff) {
 				m_timeSinceLastAttack = m_timeBetweenAttacks;
 				GameObject projectile = GameObject.Instantiate (_projectile);
 				projectile.transform.position = transform.position;
@@ -70,7 +75,7 @@ public class CharacterInput : MonoBehaviour {
 				Vector3 dir = (Input.mousePosition - sp).normalized;
 				projectile.GetComponent<Rigidbody2D> ().AddForce (dir * _projectilePower);
 			}
-			if (Input.GetKey (KeyCode.Mouse1) && m_timeSinceLastAttack < 0.0f) {
+			if (Input.GetKey (KeyCode.Mouse1) && m_timeSinceLastAttack < 0.0f && m_itemsEnabled == GameMaster.ItemsEnabled.MedallionAndStaff) {
 				m_timeSinceLastAttack = m_timeBetweenAttacks;
 				m_timeSinceLastAttack = m_timeBetweenAttacks;
 				//Use the amulet
@@ -101,7 +106,7 @@ public class CharacterInput : MonoBehaviour {
 				}
 			
 			}
-			if (Input.GetKey (KeyCode.Space) && m_curPower > 0.0f && m_timeSinceLastAttack < 0.0f) {
+			if (Input.GetKey (KeyCode.Space) && m_curPower > 0.0f && m_timeSinceLastAttack < 0.0f && (m_itemsEnabled == GameMaster.ItemsEnabled.MedallionAndStaff && m_itemsEnabled == GameMaster.ItemsEnabled.MedallionOnly)) {
 				m_timeSinceLastAttack = m_timeBetweenAttacks;
 				//Use the amulet
 				m_curPower -= Time.deltaTime * m_drainRate;
