@@ -112,7 +112,7 @@ public class Shrine : MonoBehaviour {
 	private const string s_clickToContinue = " Click the shrine to continue.";
 	private const string m_excavatingBlurb = " Excavating...";
 
-	private static float m_triggerDistance = 3.0f;
+	private static float m_triggerDistance = 10.0f;
 
 	private IEnumerator m_spawnReference;
 
@@ -377,7 +377,7 @@ public class Shrine : MonoBehaviour {
 			if (dist < m_triggerDistance) {
 				//if he is heal him as a function of time and effectiveness and distance
 				Health.SetDamageMultiplier (Mathf.Lerp (m_minPlayerDamageTakenMult, m_maxPlayerDamageTakenMult, (1 + m_triggerDistance - dist)));
-				CharacterInput.LerpColor (Color.white, Color.black,(1 + m_triggerDistance - dist) * m_effectiveness * dt);
+				CharacterInput.LerpColor (Color.white, Color.magenta,(1 + m_triggerDistance - dist) * m_effectiveness * dt);
 			}
 			break;
 		}
