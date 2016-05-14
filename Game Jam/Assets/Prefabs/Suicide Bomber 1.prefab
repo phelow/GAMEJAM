@@ -27,7 +27,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 184582}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.4, y: -2.6999998, z: 0}
+  m_LocalPosition: {x: 31.1, y: -2.3999996, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -110,8 +110,8 @@ MonoBehaviour:
   m_spriteRenderer: {fileID: 0}
   m_buff: 1
   m_rb: {fileID: 5076578}
-  m_speed: 1
-  m_defaultSpeed: 1
+  m_speed: 0.01
+  m_defaultSpeed: 0.01
   m_maxHealth: 20
   m_curHealth: 0
   m_timeBetweenBuffBursts: 0.1
@@ -120,8 +120,8 @@ MonoBehaviour:
   m_explosionRange: 4
   m_explosionTrigger: 4
   m_explosionBuildupTime: 1
-  m_minDamage: 1
-  m_maxDamage: 10
+  m_minDamage: 0
+  m_maxDamage: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
