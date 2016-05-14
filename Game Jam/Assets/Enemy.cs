@@ -83,8 +83,10 @@ public class Enemy : MonoBehaviour {
 			Collider2D[] hitColliders = Physics2D.OverlapCircleAll (transform.position, m_buffRange);
 			Debug.Log (hitColliders.Length);
 			foreach (Collider2D col in hitColliders) {
-				col.GetComponent<Enemy> ().BuffEnemy (m_buff, m_timeBetweenBuffBursts);
-
+				Enemy en = col.GetComponent<Enemy> ();
+				if(en){
+					en.BuffEnemy (m_buff, m_timeBetweenBuffBursts);
+				}
 
 			}
 

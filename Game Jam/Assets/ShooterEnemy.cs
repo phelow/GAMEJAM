@@ -10,6 +10,8 @@ public class ShooterEnemy : Enemy {
 	[SerializeField]private GameObject m_enemyProjectile;
 
 
+
+
 	private float m_timeToNextShot = 0.0f;
 	// Update is called once per frame
 	void Update () {

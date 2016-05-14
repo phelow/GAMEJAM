@@ -28,6 +28,7 @@ public class Projectile : Attack {
 	void OnCollisionEnter2D(Collision2D coll){
 		if (coll.gameObject.tag == "Enemy") {
 			coll.gameObject.GetComponent<Enemy> ().Damage (m_damage * ms_damageMultiplier);
+			Destroy (this.gameObject);
 		}
 		StartCoroutine (DestroyLater ());
 	}

@@ -115,7 +115,8 @@ public class Shrine : MonoBehaviour {
 	private IEnumerator m_spawnReference;
 
 	[SerializeField]private SpriteRenderer m_spriteRenderer;
-
+	[SerializeField]private AudioSource m_as;
+	[SerializeField]private AudioClip m_spawnclip;
 
 	// Use this for initialization
 	void Start () {
@@ -140,6 +141,7 @@ public class Shrine : MonoBehaviour {
 		//todo
 		while (true) {
 			GameObject.Instantiate (m_spawnable);
+			m_as.PlayOneShot (m_spawnclip);
 			m_spawnable.transform.position = new Vector3(gameObject.transform.position.x + m_xSpawningOffset,gameObject.transform.position.y + m_ySpawningOffset,gameObject.transform.position.z);
 			yield return new WaitForSeconds (Random.Range (m_minSpawnTime, m_maxSpawnTime));
 		}

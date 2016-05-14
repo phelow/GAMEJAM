@@ -32,7 +32,6 @@ public class Health : MonoBehaviour {
 
 	public static void TakeDamage(float amt){
 		s_instance.m_curHealth -= amt * m_damageMultiplier;
-		Debug.LogError ("taking damage:" +  s_instance.m_curHealth);
 		if (s_instance.m_curHealth < 0) {
 			Debug.Log ("You have died");
 			//TODO: gameover
