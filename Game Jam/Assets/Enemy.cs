@@ -16,8 +16,8 @@ public class Enemy : MonoBehaviour {
 	[SerializeField]protected float m_speed = 1.0f;
 	[SerializeField]protected float m_defaultSpeed = 1.0f;
 
-	[SerializeField]private float m_maxHealth = 100.0f;
-	[SerializeField]private float m_curHealth;
+	[SerializeField]protected float m_maxHealth = 100.0f;
+	[SerializeField]protected float m_curHealth;
 	[SerializeField]private float m_timeBetweenBuffBursts = .1f;
 	[SerializeField]private float m_buffRange = 10.0f;
 	[SerializeField]private float m_buffedSpeed = 10.0f;
@@ -27,7 +27,9 @@ public class Enemy : MonoBehaviour {
 	void Start () {
 		s_player = GameObject.FindGameObjectWithTag ("Player");
 		m_curHealth = m_maxHealth;
-		StartCoroutine (BuffOtherEnemies ());
+		if (m_buff == Buff.Speed) {
+			StartCoroutine (BuffOtherEnemies ());
+		}
 	}
 
 	private IEnumerator SpeedBoost(float duration){
@@ -61,14 +63,8 @@ public class Enemy : MonoBehaviour {
 			Collider2D[] hitColliders = Physics2D.OverlapCircleAll (transform.position, m_buffRange);
 			Debug.Log (hitColliders.Length);
 			foreach (Collider2D col in hitColliders) {
-				//if the angle betweeen is less than amulet angle
-				Vector3 directionToTarget = transform.position - col.transform.position;
+				col.GetComponent<Enemy> ().BuffEnemy (m_buff, m_timeBetweenBuffBursts);
 
-				float angle = Vector3.Angle (transform.up * -1, directionToTarget);
-
-				if (Mathf.Abs (angle) < 45.0f && col.tag == "Enemy") {
-					col.GetComponent<Enemy> ().BuffEnemy (m_buff, m_timeBetweenBuffBursts);
-				}
 
 			}
 
