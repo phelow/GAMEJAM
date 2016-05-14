@@ -24,6 +24,7 @@ public class GameMaster : MonoBehaviour {
 	}
 
 	private IEnumerator DayNightCycle(){
+		yield return new WaitForSeconds (.5f);
 		for(day = 0; day < m_dayLengthForLevels.Length; day++){
 			m_dayLength = m_dayLengthForLevels [day];
 			m_nightLength = m_nightLengthForLevels [day];

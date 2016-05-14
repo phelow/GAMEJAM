@@ -6,7 +6,7 @@ public class Projectile : Attack {
 
 	// Use this for initialization
 	void Start () {
-	
+		//choose random color for the particle system
 	}
 	
 	// Update is called once per frame

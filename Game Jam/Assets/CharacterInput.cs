@@ -33,6 +33,7 @@ public class CharacterInput : MonoBehaviour {
 	[SerializeField]private Animator m_animator;
 
 	private float m_timeSinceLastAttack;
+	private GameMaster.ItemsEnabled m_itemsEnabled;
 
 	private static bool m_immobilized = false;
 
@@ -59,8 +60,8 @@ public class CharacterInput : MonoBehaviour {
 		m_curPower = m_maxPower;
 	}
 
-	private GameMaster.ItemsEnabled m_itemsEnabled;
 	public static void SetWeaponForLevel(GameMaster.ItemsEnabled master){
+		Debug.Log (s_instance.m_itemsEnabled);
 		s_instance.m_itemsEnabled = master;
 	}
 
