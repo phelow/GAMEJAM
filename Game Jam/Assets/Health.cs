@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class Health : MonoBehaviour {
 	private static Health s_instance;
 	[SerializeField]private float m_maxHealth;
+	private static float m_damageMultiplier = 1.0f;
 	private float m_curHealth;
 	[SerializeField]private Text m_healthText;
 
@@ -25,9 +26,12 @@ public class Health : MonoBehaviour {
 		s_instance.m_healthText.text = "" + s_instance.m_curHealth;
 	}
 
+	public static void SetDamageMultiplier(float mult){
+		m_damageMultiplier = mult;
+	}
 
 	public static void TakeDamage(float amt){
-		s_instance.m_curHealth -= amt;
+		s_instance.m_curHealth -= amt * m_damageMultiplier;
 		if (s_instance.m_curHealth < 0) {
 			Debug.Log ("You have died");
 			//TODO: gameover

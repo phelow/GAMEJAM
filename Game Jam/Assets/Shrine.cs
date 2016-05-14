@@ -6,7 +6,9 @@ public class Shrine : MonoBehaviour {
 	public enum ShrineTypePositiveEffect{
 		Healing,
 		FireRate,
-		PlayerMovementIncrease
+		PlayerMovementIncrease,
+		ImprovePlayerDamageDealt,
+		ReducePlayerDamageTaken
 	}
 
 	public enum ShrineTypeNegativeEffect{
@@ -54,6 +56,14 @@ public class Shrine : MonoBehaviour {
 
 	[SerializeField]private float m_xSpawningOffset = 10.0f;
 	[SerializeField]private float m_ySpawningOffset = 10.0f;
+
+	[SerializeField]private float m_minPlayerDamageMult = 1.0f;
+	[SerializeField]private float m_maxPlayerDamageMult = 10.0f;
+
+
+	[SerializeField]private float m_minPlayerDamageTakenMult = 1.0f;
+	[SerializeField]private float m_maxPlayerDamageTakenMult = .1f;
+
 
 	private static Phase s_phase;
 
@@ -255,11 +265,11 @@ public class Shrine : MonoBehaviour {
 		}
 		CharacterInput.ResetFireRate ();
 		CharacterInput.ResetSpeed ();
+		Projectile.ResetDamageMultiplier ();
 		m_particleSystem.enableEmission = false;
 
 
 	}
-
 	private void DoEffect(float dt){
 		float dist = Vector3.Distance (s_player.transform.position, transform.position);
 		switch (m_type) {
@@ -284,7 +294,20 @@ public class Shrine : MonoBehaviour {
 				CharacterInput.SetMovementSpeed (Mathf.Lerp (m_minPlayerMoveSpeed, m_maxPlayerMoveSpeed, (1 + m_triggerDistance - dist)));
 			}
 			break;
+		case ShrineTypePositiveEffect.ImprovePlayerDamageDealt:
+			if (dist < m_triggerDistance) {
+				//if he is heal him as a function of time and effectiveness and distance
+				Projectile.SetDamageMultiplier (Mathf.Lerp (m_minPlayerDamageMult, m_maxPlayerDamageMult, (1 + m_triggerDistance - dist)));
+			}
+			break;
+		case ShrineTypePositiveEffect.ReducePlayerDamageTaken:
+			if (dist < m_triggerDistance) {
+				//if he is heal him as a function of time and effectiveness and distance
+				Health.SetDamageMultiplier (Mathf.Lerp (m_minPlayerDamageTakenMult, m_maxPlayerDamageTakenMult, (1 + m_triggerDistance - dist)));
+			}
+			break;
 		}
+
 
 		switch (m_negativeEffect) {
 		case ShrineTypeNegativeEffect.Hurting:
