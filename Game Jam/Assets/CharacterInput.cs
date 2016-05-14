@@ -104,6 +104,11 @@ public class CharacterInput : MonoBehaviour {
 		}
 	}
 
+	public static void SetFireRate(float fireRate){
+		s_instance.m_timeBetweenAttacks = fireRate;
+		Debug.Log ("Setting fire rate to: " + fireRate);
+	}
+
 	private IEnumerator PlayerInput(){
 		while (true) {
 			if (m_immobilized == false) {

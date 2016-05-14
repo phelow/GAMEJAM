@@ -4,7 +4,8 @@ using System.Collections.Generic;
 
 public class Shrine : MonoBehaviour {
 	public enum ShrineTypePositiveEffect{
-		Healing
+		Healing,
+		FireRate
 	}
 
 	public enum ShrineTypeNegativeEffect{
@@ -44,6 +45,10 @@ public class Shrine : MonoBehaviour {
 	[SerializeField]private float m_minSpawnTime = 1.0f;
 	[SerializeField]private float m_maxSpawnTime = 5.0f;
 
+	[SerializeField]private float m_minFireRate = 1.0f;
+	[SerializeField]private float m_maxFireRate = .1f;
+
+
 	[SerializeField]private float m_xSpawningOffset = 10.0f;
 	[SerializeField]private float m_ySpawningOffset = 10.0f;
 
@@ -81,7 +86,6 @@ public class Shrine : MonoBehaviour {
 		while (true) {
 			GameObject.Instantiate (m_spawnable);
 			m_spawnable.transform.position = new Vector3(gameObject.transform.position.x + m_xSpawningOffset,gameObject.transform.position.y + m_ySpawningOffset,gameObject.transform.position.z);
-			Debug.Log (m_spawnable.transform.position);
 			yield return new WaitForSeconds (Random.Range (m_minSpawnTime, m_maxSpawnTime));
 		}
 	}
@@ -89,7 +93,7 @@ public class Shrine : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (s_phase == Phase.Night) {
-			if (m_spawnReference == null && m_negativeEffect == ShrineTypeNegativeEffect.Spawner) {
+			if (m_spawnReference == null && m_negativeEffect == ShrineTypeNegativeEffect.Spawner && m_excavationStatus == ExcavationStatus.Excavated) {
 				m_spawnReference = SpawnRoutine ();
 				StartCoroutine (m_spawnReference);
 			}
@@ -246,6 +250,7 @@ public class Shrine : MonoBehaviour {
 			DoEffect (dt);
 			yield return new WaitForEndOfFrame ();
 		}
+		CharacterInput.SetFireRate (1.0f);
 		m_particleSystem.enableEmission = false;
 
 
@@ -259,6 +264,14 @@ public class Shrine : MonoBehaviour {
 			if( dist < m_triggerDistance){
 				//if he is heal him as a function of time and effectiveness and distance
 				Health.Heal((1 + m_triggerDistance - dist) * m_effectiveness * dt);
+			}
+			break;
+
+		case ShrineTypePositiveEffect.FireRate:
+			//See if the player is close enough
+			if (dist < m_triggerDistance) {
+				//if he is heal him as a function of time and effectiveness and distance
+				CharacterInput.SetFireRate (Mathf.Lerp (m_minFireRate, m_maxFireRate, (1 + m_triggerDistance - dist) * m_effectiveness));
 			}
 			break;
 		}
@@ -279,8 +292,9 @@ public class Shrine : MonoBehaviour {
 	}
 
 	public void TurnOn(){
-		Debug.Log ("127: Turn on");
-		StartCoroutine (ShrineActive ());
+		if(m_excavationStatus == ExcavationStatus.Excavated){
+			StartCoroutine (ShrineActive ());
+		}
 	}
 
 	void OnMouseDown(){
