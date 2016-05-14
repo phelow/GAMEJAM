@@ -31,11 +31,20 @@ public class Enemy : MonoBehaviour {
 	}
 
 	private IEnumerator SpeedBoost(float duration){
-		m_spriteRenderer.color = Color.yellow;
+		try{
+			m_spriteRenderer.color = Color.yellow;
+		}
+		catch{
+			Debug.LogWarning ("Need a sprite render for Enemy");
+		}
 		m_speed = m_buffedSpeed;
 		yield return new WaitForSeconds (duration);
-		m_speed = m_defaultSpeed;
-		m_spriteRenderer.color = Color.white;
+		m_speed = m_defaultSpeed;try{
+			m_spriteRenderer.color = Color.white;
+		}
+		catch{
+			Debug.LogWarning ("Need a sprite render for Enemy");
+		}
 	}
 
 	public void BuffEnemy(Buff buff,float duration){

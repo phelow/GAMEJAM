@@ -461,7 +461,7 @@ ParticleSystem:
     serializedVersion: 2
     m_Type: 0
     rate:
-      scalar: 10
+      scalar: 999
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1599,7 +1599,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -34
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
