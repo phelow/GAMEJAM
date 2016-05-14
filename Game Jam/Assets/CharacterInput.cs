@@ -27,6 +27,8 @@ public class CharacterInput : MonoBehaviour {
 	[SerializeField]private float m_amuletMaxStrength = 5.0f;
 
 	[SerializeField]private float m_timeBetweenAttacks = 1.0f;
+	[SerializeField]private float m_meleeRange = 1.0f;
+	[SerializeField]private float m_meleeDamage = 1.0f;
 
 	[SerializeField]private Animator m_animator;
 
@@ -69,14 +71,34 @@ public class CharacterInput : MonoBehaviour {
 				projectile.GetComponent<Rigidbody2D> ().AddForce (dir * _projectilePower);
 			}
 			if (Input.GetKey (KeyCode.Mouse1) && m_timeSinceLastAttack < 0.0f) {
-				ImmobilizeCharacter ();
 				m_timeSinceLastAttack = m_timeBetweenAttacks;
-				GameObject projectile = GameObject.Instantiate (_melee);
-				projectile.transform.parent = this.transform;
-				projectile.transform.localPosition = Vector2.zero;
-				Vector3 sp = Camera.main.WorldToScreenPoint (transform.position);
-				Vector3 dir = (Input.mousePosition - sp).normalized;
-				projectile.GetComponent<Rigidbody2D> ().AddForce (dir * _meleePower);
+				m_timeSinceLastAttack = m_timeBetweenAttacks;
+				//Use the amulet
+				m_curPower -= Time.deltaTime * m_drainRate;
+
+				Collider2D[] hitColliders = Physics2D.OverlapCircleAll (transform.position, m_meleeRange);
+				Debug.Log (hitColliders.Length);
+				foreach (Collider2D col in hitColliders) {
+					//if the angle betweeen is less than amulet angle
+					Vector3 directionToTarget = transform.position - col.transform.position;
+
+					float angle = Vector3.Angle (transform.up * -1, directionToTarget);
+
+					if (Mathf.Abs (angle) < 45.0f && col.tag != "Player") {
+
+						if (col.tag == "Enemy") {
+							col.GetComponent<Enemy> ().Damage (m_meleeDamage);
+						}
+
+						Debug.Log ("Object is in front of the player:" + angle);
+						//then push them away from the player.'
+						Rigidbody2D rb = col.GetComponent<Rigidbody2D> ();
+						if (rb) {
+							rb.AddForce (transform.up * m_amuletPower * Mathf.Lerp (m_amuletMinStrength, m_amuletMaxStrength, m_curPower / m_maxPower));
+						}
+					}
+
+				}
 			
 			}
 			if (Input.GetKey (KeyCode.Space) && m_curPower > 0.0f && m_timeSinceLastAttack < 0.0f) {
