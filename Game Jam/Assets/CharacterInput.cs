@@ -38,6 +38,7 @@ public class CharacterInput : MonoBehaviour {
 	private static bool m_immobilized = false;
 
 	public static void ImmobilizeCharacter (){
+		s_instance.m_animator.CrossFade ("Digging", 0.0f);
 		m_immobilized = true;
 		Debug.Log ("Character has been immobilized");
 		s_instance._rb.velocity = Vector2.zero;
