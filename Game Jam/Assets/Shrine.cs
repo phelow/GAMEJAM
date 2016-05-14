@@ -287,7 +287,7 @@ public class Shrine : MonoBehaviour {
 		CharacterInput.ResetSpeed ();
 		Projectile.ResetDamageMultiplier ();
 		m_particleSystem.enableEmission = false;
-
+		Destroy (this);
 
 	}
 	private void DoEffect(float dt){

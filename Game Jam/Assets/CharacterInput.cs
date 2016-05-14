@@ -60,7 +60,7 @@ public class CharacterInput : MonoBehaviour {
 	void Update(){
 		m_timeSinceLastAttack -= Time.deltaTime;
 		if (m_immobilized == false && Shrine.IsDay() == false && m_timeSinceLastAttack < 0.0f) {
-			if (Input.GetKeyDown (KeyCode.Mouse0)) {
+			if (Input.GetKey(KeyCode.Mouse0)) {
 				m_timeSinceLastAttack = m_timeBetweenAttacks;
 				GameObject projectile = GameObject.Instantiate (_projectile);
 				projectile.transform.position = transform.position;
@@ -68,7 +68,7 @@ public class CharacterInput : MonoBehaviour {
 				Vector3 dir = (Input.mousePosition - sp).normalized;
 				projectile.GetComponent<Rigidbody2D> ().AddForce (dir * _projectilePower);
 			}
-			if (Input.GetKeyDown (KeyCode.Mouse1) && m_timeSinceLastAttack < 0.0f) {
+			if (Input.GetKey (KeyCode.Mouse1) && m_timeSinceLastAttack < 0.0f) {
 				ImmobilizeCharacter ();
 				m_timeSinceLastAttack = m_timeBetweenAttacks;
 				GameObject projectile = GameObject.Instantiate (_melee);
