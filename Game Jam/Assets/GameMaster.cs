@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class GameMaster : MonoBehaviour {
@@ -14,12 +15,12 @@ public class GameMaster : MonoBehaviour {
 	[SerializeField]private float m_nightLength = 10.0f;
 	[SerializeField]private Text m_timeText;
 
-	[SerializeField]private SpriteRenderer m_backgroundSpriteRenderer;
+	[SerializeField]private List<SpriteRenderer> m_backgroundSpriteRenderer;
 	[SerializeField]private Sprite m_backgroundDaySprite;
 	[SerializeField]private Sprite m_backgroundNightSprite;
 
 
-	[SerializeField]private SpriteRenderer m_foregroundSpriteRenderer;
+	[SerializeField]private List<SpriteRenderer> m_foregroundSpriteRenderer;
 	[SerializeField]private Sprite m_foregroundDaySprite;
 	[SerializeField]private Sprite m_foregroundNightSprite;
 
@@ -43,8 +44,12 @@ public class GameMaster : MonoBehaviour {
 
 			//Set Daytime
 			Shrine.SetDay();
-			m_backgroundSpriteRenderer.sprite = m_backgroundDaySprite;
-			m_foregroundSpriteRenderer.sprite = m_foregroundDaySprite;
+			foreach (SpriteRenderer sr in m_backgroundSpriteRenderer) {
+				sr.sprite = m_backgroundDaySprite;
+			}
+			foreach (SpriteRenderer sr in m_foregroundSpriteRenderer) {
+				sr.sprite = m_foregroundDaySprite;
+			}
 
 			//Wait for the day to end
 			//yield return new WaitForSeconds(m_dayLength);
@@ -58,8 +63,12 @@ public class GameMaster : MonoBehaviour {
 
 			//Set nightTime
 			Shrine.SetNight();
-			m_backgroundSpriteRenderer.sprite = m_backgroundNightSprite;
-			m_foregroundSpriteRenderer.sprite = m_foregroundNightSprite;
+			foreach (SpriteRenderer sr in m_backgroundSpriteRenderer) {
+				sr.sprite = m_backgroundNightSprite;
+			}
+			foreach (SpriteRenderer sr in m_foregroundSpriteRenderer) {
+				sr.sprite = m_foregroundNightSprite;
+			}
 			t = m_nightLength;
 			while (t >= 0.0f) {
 				t -= Time.deltaTime;
