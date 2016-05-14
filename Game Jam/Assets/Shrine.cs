@@ -356,6 +356,7 @@ public class Shrine : MonoBehaviour {
 				//if he is heal him as a function of time and effectiveness and distance
 				Health.SetDamageMultiplier (Mathf.Lerp (m_minPlayerDamageDebuffTakenMult, m_maxPlayerDamageDebuffTakenMult, (1 + m_triggerDistance - dist)));
 			}
+			break;
 		}
 	}
 

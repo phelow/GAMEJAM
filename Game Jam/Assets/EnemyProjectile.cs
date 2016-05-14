@@ -1,17 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Projectile : Attack {
+public class EnemyProjectile : Attack {
 	private static float ms_damageMultiplier = 1.0f;
 
 	// Use this for initialization
 	void Start () {
-	
+
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-	
+
 	}
 
 	public static void SetDamageMultiplier(float damMultiplier){
@@ -24,14 +24,9 @@ public class Projectile : Attack {
 
 
 	void OnCollisionEnter2D(Collision2D coll){
-		if (coll.gameObject.tag == "Enemy") {
-			coll.gameObject.GetComponent<Enemy> ().Damage (m_damage * ms_damageMultiplier);
+		if (coll.gameObject.tag == "Player") {
+			Health.TakeDamage (m_damage * ms_damageMultiplier);
 		}
-		StartCoroutine (DestroyLater ());
-	}
-
-	private IEnumerator DestroyLater(){
-		yield return new WaitForSeconds (3.0f);
 		Destroy (this.gameObject);
 	}
 }
