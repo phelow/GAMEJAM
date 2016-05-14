@@ -194,6 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27e03b114dc03bd4fb3bba951a40de1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_spawnable: {fileID: 184582, guid: 8474924bfc835df4e97bd44eccc1d5b7, type: 2}
   m_excavationStatus: 1
   m_type: 0
   m_negativeEffect: 1
@@ -204,6 +205,10 @@ MonoBehaviour:
   - '[temp] shrine poem 3'
   m_excavationTime: 3
   m_rb: {fileID: 5043304}
+  m_minSpawnTime: 1
+  m_maxSpawnTime: 5
+  m_xSpawningOffset: 10
+  m_ySpawningOffset: 10
   m_activeTime: 5
   m_particleSystem: {fileID: 19871474}
   m_effectiveness: 1

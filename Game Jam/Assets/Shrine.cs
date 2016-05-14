@@ -44,6 +44,9 @@ public class Shrine : MonoBehaviour {
 	[SerializeField]private float m_minSpawnTime = 1.0f;
 	[SerializeField]private float m_maxSpawnTime = 5.0f;
 
+	[SerializeField]private float m_xSpawningOffset = 10.0f;
+	[SerializeField]private float m_ySpawningOffset = 10.0f;
+
 	private static Phase s_phase;
 
 	private const float c_baseReadingTime = 7.0f;
@@ -68,7 +71,6 @@ public class Shrine : MonoBehaviour {
 	void Start () {
 		s_instance = this;
 		m_particleSystem.enableEmission = false;
-		m_spawnReference = SpawnRoutine ();
 		if (s_player == null) {
 			s_player = GameObject.FindGameObjectWithTag ("Player");
 		}
@@ -78,28 +80,44 @@ public class Shrine : MonoBehaviour {
 		//todo
 		while (true) {
 			GameObject.Instantiate (m_spawnable);
+			m_spawnable.transform.position = new Vector3(gameObject.transform.position.x + m_xSpawningOffset,gameObject.transform.position.y + m_ySpawningOffset,gameObject.transform.position.z);
+			Debug.Log (m_spawnable.transform.position);
 			yield return new WaitForSeconds (Random.Range (m_minSpawnTime, m_maxSpawnTime));
 		}
 	}
 
 	// Update is called once per frame
 	void Update () {
+		if (s_phase == Phase.Night) {
+			if (m_spawnReference == null && m_negativeEffect == ShrineTypeNegativeEffect.Spawner) {
+				m_spawnReference = SpawnRoutine ();
+				StartCoroutine (m_spawnReference);
+			}
+		} else {
+			if (m_spawnReference != null && m_negativeEffect == ShrineTypeNegativeEffect.Spawner) {
+				StopCoroutine (m_spawnReference);
+				m_spawnReference = null;
+			}
+		}
 	}
 
-	public static void SetNight(){
+	public static void SetNight(){ //needs to be called for every individual gameobject
 		s_phase = Phase.Night;
-		if (s_instance.m_negativeEffect == ShrineTypeNegativeEffect.Spawner) {
+		/*if (s_instance.m_negativeEffect == ShrineTypeNegativeEffect.Spawner) {
+			Debug.Log ("Starting spawning coroutine");
 			s_instance.StartCoroutine (s_instance.m_spawnReference);
 
 
-		}
+		}*/
 
 	}
 
 
 	public static void SetDay(){
 		s_phase = Phase.Day;
-		s_instance.StopCoroutine (s_instance.m_spawnReference);
+
+
+		//s_instance.StopCoroutine (s_instance.m_spawnReference);
 	}
 
 
