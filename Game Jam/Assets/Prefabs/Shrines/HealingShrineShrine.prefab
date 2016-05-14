@@ -192,9 +192,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0000021090875, y: 0.0000014671913}
   serializedVersion: 2
-  m_Size: {x: 3.97, y: 4.73}
+  m_Size: {x: 2.4560943, y: 3.518877}
 --- !u!82 &8272332
 AudioSource:
   m_ObjectHideFlags: 1
@@ -300,6 +300,7 @@ MonoBehaviour:
   m_shrineExplanation: '[temp] shrine explanation'
   m_shrinePoems:
   - The wheatstalk may bend but it will not break.
+  - "step into it just after or when you\u2019re about to take heavy dmg"
   m_minPlayerMoveSpeed: 1
   m_maxPlayerMoveSpeed: 1
   m_minPlayerMoveDebuffSpeed: 0.5

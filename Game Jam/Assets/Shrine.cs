@@ -122,12 +122,14 @@ public class Shrine : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		m_shrineExplanation = m_shrinePoems [1];
 		m_bottomRenderer.sprite = m_bottomsBuried [(int)m_type];
 		m_topRenderer.sprite = m_tops [(int)m_negativeEffect];
 
 		s_instance = this;
 		try{
-			s_instance.m_spriteRenderer.color = Color.grey;
+			s_instance.m_spriteRenderer.color = new Color(Color.black.r,Color.black.g,Color.black.b,.1f);
+			Debug.LogWarning("greyed out");
 		}
 		catch{
 			Debug.LogError ("Assign sprite renderer");
@@ -245,7 +247,7 @@ public class Shrine : MonoBehaviour {
 
 			m_bottomRenderer.sprite = m_bottoms [(int)m_type];
 			m_rb.isKinematic = false;
-			TextManager.SetText (m_shrineExplanation);
+			TextManager.SetText (m_shrinePoems[1]);
 			m_clickedToContinue = false; 
 			yield return new WaitForSeconds (.1f);
 			StartCoroutine (WaitForSpace ()); 
@@ -416,7 +418,7 @@ public class Shrine : MonoBehaviour {
 	}
 
 	void OnMouseDown(){
-		if (s_instance.m_activated) {
+		if (m_activated) {
 			CharacterInput.PlayClickSoundEffect ();
 
 			if (s_phase == Phase.Day) {
@@ -431,6 +433,7 @@ public class Shrine : MonoBehaviour {
 					m_clickedToContinue = true;
 				}
 			}
+		} else {
 		}
 	}
 }

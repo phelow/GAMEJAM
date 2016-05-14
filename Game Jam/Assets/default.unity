@@ -398,7 +398,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 432688, guid: 4350a87ac761a09418607d0684e0fdb2, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4350a87ac761a09418607d0684e0fdb2, type: 2}
@@ -883,7 +883,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 489814, guid: 804efa4c7a202564496caf57c3c7094e, type: 2}
       propertyPath: m_RootOrder
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 6122862, guid: 804efa4c7a202564496caf57c3c7094e, type: 2}
       propertyPath: m_Offset.y
@@ -1061,23 +1061,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 446282, guid: 9524644e9b77d3e469554e7e551db255, type: 2}
       propertyPath: m_RootOrder
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 6175330, guid: 9524644e9b77d3e469554e7e551db255, type: 2}
-      propertyPath: m_Offset.x
-      value: 0.0000021090875
-      objectReference: {fileID: 0}
-    - target: {fileID: 6175330, guid: 9524644e9b77d3e469554e7e551db255, type: 2}
-      propertyPath: m_Size.x
-      value: 2.4560943
-      objectReference: {fileID: 0}
-    - target: {fileID: 6175330, guid: 9524644e9b77d3e469554e7e551db255, type: 2}
-      propertyPath: m_Offset.y
-      value: 0.0000014671913
-      objectReference: {fileID: 0}
-    - target: {fileID: 6175330, guid: 9524644e9b77d3e469554e7e551db255, type: 2}
-      propertyPath: m_Size.y
-      value: 3.518877
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9524644e9b77d3e469554e7e551db255, type: 2}
@@ -1459,7 +1443,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 426954, guid: ae8a6bcae33e2bb478cd14d941394c30, type: 2}
       propertyPath: m_RootOrder
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ae8a6bcae33e2bb478cd14d941394c30, type: 2}
@@ -1931,6 +1915,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11459340, guid: c11738a5840130f47a6caebbcce32d7e, type: 2}
+      propertyPath: m_shrinePoems.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 406560, guid: c11738a5840130f47a6caebbcce32d7e, type: 2}
       propertyPath: m_LocalPosition.x
       value: -25.5
@@ -1962,6 +1950,14 @@ Prefab:
     - target: {fileID: 406560, guid: c11738a5840130f47a6caebbcce32d7e, type: 2}
       propertyPath: m_RootOrder
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 11459340, guid: c11738a5840130f47a6caebbcce32d7e, type: 2}
+      propertyPath: m_shrinePoems.Array.data[0]
+      value: The hounds hunt the fox
+      objectReference: {fileID: 0}
+    - target: {fileID: 11459340, guid: c11738a5840130f47a6caebbcce32d7e, type: 2}
+      propertyPath: m_shrinePoems.Array.data[1]
+      value: watch as it tries to run.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c11738a5840130f47a6caebbcce32d7e, type: 2}
@@ -2718,23 +2714,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 490782, guid: 638e40c1ef7a14941bf23e941d95d39c, type: 2}
       propertyPath: m_RootOrder
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 6123546, guid: 638e40c1ef7a14941bf23e941d95d39c, type: 2}
-      propertyPath: m_Offset.y
-      value: 0.060964733
-      objectReference: {fileID: 0}
-    - target: {fileID: 6123546, guid: 638e40c1ef7a14941bf23e941d95d39c, type: 2}
-      propertyPath: m_Size.y
-      value: 2.826506
-      objectReference: {fileID: 0}
-    - target: {fileID: 6123546, guid: 638e40c1ef7a14941bf23e941d95d39c, type: 2}
-      propertyPath: m_Offset.x
-      value: 0.15240988
-      objectReference: {fileID: 0}
-    - target: {fileID: 6123546, guid: 638e40c1ef7a14941bf23e941d95d39c, type: 2}
-      propertyPath: m_Size.x
-      value: 1.5713241
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 638e40c1ef7a14941bf23e941d95d39c, type: 2}
