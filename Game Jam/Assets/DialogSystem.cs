@@ -2,25 +2,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+public enum LevelEnum{
+	Day1,
+	Night1,
+	Day2,
+	Night2,
+	Day3,
+	Night3,
+	Day4,
+	Night4,
+	Day5,
+	Night5
 
+
+
+
+
+}
 public class DialogSystem : MonoBehaviour {
-	public enum LevelEnum{
-		Day1,
-		Night1,
-		Day2,
-		Night2,
-		Day3,
-		Night3,
-		Day4,
-		Night4,
-		Day5,
-		Night5
-
-
-
-
-
-	}
+	
     //Game objects for each day and night dialogue
     [SerializeField]
     GameObject Day1;

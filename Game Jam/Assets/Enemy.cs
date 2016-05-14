@@ -49,7 +49,7 @@ public class Enemy : MonoBehaviour {
 		s_player = GameObject.FindGameObjectWithTag ("Player");
 		m_curHealth = m_maxHealth;
 		if (m_buff == Buff.Speed) {
-			StartCoroutine (BuffOtherEnemies ());
+			//StartCoroutine (BuffOtherEnemies ());
 		}
 	}
 

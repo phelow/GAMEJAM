@@ -45,6 +45,23 @@ public class GameMaster : MonoBehaviour {
 			//Set Daytime
 			Health.Heal(100);
 			Shrine.SetDay();
+			switch (day) {
+			case 0:
+				DialogSystem.Main.SetLevel (LevelEnum.Day1);
+				break;
+			case 1:
+				DialogSystem.Main.SetLevel (LevelEnum.Day2);
+				break;
+			case 2:
+				DialogSystem.Main.SetLevel (LevelEnum.Day3);
+				break;
+			case 3:
+				DialogSystem.Main.SetLevel (LevelEnum.Day4);
+				break;
+			case 4:
+				DialogSystem.Main.SetLevel (LevelEnum.Day5);
+				break;
+			}
 			foreach (SpriteRenderer sr in m_backgroundSpriteRenderer) {
 				sr.sprite = m_backgroundDaySprite;
 			}
@@ -64,6 +81,23 @@ public class GameMaster : MonoBehaviour {
 
 			//Set nightTime
 			Shrine.SetNight();
+			switch (day) {
+			case 0:
+				DialogSystem.Main.SetLevel (LevelEnum.Night1);
+				break;
+			case 1:
+				DialogSystem.Main.SetLevel (LevelEnum.Night2);
+				break;
+			case 2:
+				DialogSystem.Main.SetLevel (LevelEnum.Night3);
+				break;
+			case 3:
+				DialogSystem.Main.SetLevel (LevelEnum.Night4);
+				break;
+			case 4:
+				DialogSystem.Main.SetLevel (LevelEnum.Night5);
+				break;
+			}
 			foreach (SpriteRenderer sr in m_backgroundSpriteRenderer) {
 				sr.sprite = m_backgroundNightSprite;
 			}

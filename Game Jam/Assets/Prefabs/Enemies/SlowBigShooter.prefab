@@ -27,7 +27,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 152326}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.44, y: -3.04, z: 0}
+  m_LocalPosition: {x: -16.1, y: -8.200001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -103,7 +103,7 @@ MonoBehaviour:
   m_timeBetweenBuffBursts: 0.1
   m_buffRange: 10
   m_buffedSpeed: 10
-  m_animator: {fileID: 0}
+  m_animator: {fileID: 9593200}
   m_startShootingRange: 7
   m_minBetweenShotTime: 4
   m_maxBetweenShotTime: 5
@@ -145,7 +145,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_animator
+      value: 
+      objectReference: {fileID: 9593200}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 152326}
