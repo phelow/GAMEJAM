@@ -246,7 +246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cd5ea3c0fc72d0489fc2a2a1823439f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_dayLength: 100
+  m_dayLength: 1
   m_nightLength: 100
   m_timeText: {fileID: 1689415098}
 --- !u!4 &243381545
@@ -384,10 +384,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb: {fileID: 467363291}
-  _speed: 170
-  _defaultSpeed: 150
+  _speed: 220
+  _defaultSpeed: 200
   m_defaultFireRate: 0.1
-  _projectilePower: 1500
+  _projectilePower: 2500
   _meleePower: 10
   _projectile: {fileID: 160562, guid: b74cfa51ef225d74fa71e3868ffd13c3, type: 2}
   _melee: {fileID: 160562, guid: 244e29258020aa141bac6e8dc9f8fd73, type: 2}
