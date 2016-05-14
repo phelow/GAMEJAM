@@ -8,11 +8,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 489250}
-  - 33: {fileID: 3338398}
-  - 23: {fileID: 2343686}
   - 58: {fileID: 5897372}
   - 114: {fileID: 11433110}
   - 50: {fileID: 5076578}
+  - 212: {fileID: 21219456}
   m_Layer: 0
   m_Name: Suicide Bomber 1
   m_TagString: Enemy
@@ -27,44 +26,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 184582}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 31.1, y: -2.3999996, z: 0}
+  m_LocalPosition: {x: -13.586, y: 7.174027, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!23 &2343686
-MeshRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 184582}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
---- !u!33 &3338398
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 184582}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!50 &5076578
 Rigidbody2D:
   serializedVersion: 2
@@ -93,9 +59,9 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.12, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1.0337844
 --- !u!114 &11433110
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -107,7 +73,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80f3a45c958812741aa4a7264323b7ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_spriteRenderer: {fileID: 0}
+  m_spriteRenderer: {fileID: 21219456}
   m_buff: 1
   m_rb: {fileID: 5076578}
   m_speed: 0.01
@@ -122,6 +88,40 @@ MonoBehaviour:
   m_explosionBuildupTime: 1
   m_minDamage: 0
   m_maxDamage: 0
+  m_explosion1: {fileID: 21300000, guid: 91748393dd34fda47a379606a2664560, type: 3}
+  m_explosion2: {fileID: 21300000, guid: 74976af6307045c42b37b316b7fc90cd, type: 3}
+  m_explosion3: {fileID: 21300000, guid: e8114def9bed8354cab570b39fcfa63e, type: 3}
+  m_explosion4: {fileID: 21300000, guid: 066ac8deafb26f74b900c1b0e5a454c9, type: 3}
+--- !u!212 &21219456
+SpriteRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184582}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_ReflectionProbeUsage: 0
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 44688169a70e3854aaca01beb7c025a2, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

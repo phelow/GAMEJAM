@@ -10,6 +10,10 @@ public class SuicideBomberEnemy : Enemy {
 	[SerializeField]private float m_minDamage = 1.0f;
 	[SerializeField]private float m_maxDamage = 10.0f;
 
+	[SerializeField]private Sprite m_explosion1;
+	[SerializeField]private Sprite m_explosion2;
+	[SerializeField]private Sprite m_explosion3;
+	[SerializeField]private Sprite m_explosion4;
 
 
 	private bool m_exploding = false;
@@ -36,7 +40,14 @@ public class SuicideBomberEnemy : Enemy {
 	}
 
 	private IEnumerator ExplodeRoutine(){
-		yield return new WaitForSeconds (m_explosionBuildupTime);
+		m_spriteRenderer.sprite = m_explosion1;
+		yield return new WaitForSeconds (m_explosionBuildupTime/3);
+		m_spriteRenderer.sprite = m_explosion1;
+		yield return new WaitForSeconds (m_explosionBuildupTime/3);
+		m_spriteRenderer.sprite = m_explosion3;
+		yield return new WaitForSeconds (m_explosionBuildupTime/3);
+		m_spriteRenderer.sprite = m_explosion4;
+		yield return new WaitForSeconds (m_explosionBuildupTime/3);
 		float dist = Vector3.Distance (s_player.gameObject.transform.position, transform.position);
 		if (dist < m_explosionRange) {
 			Health.TakeDamage (Mathf.Lerp (m_minDamage, m_maxDamage, ((m_explosionRange - dist) / m_explosionRange)));

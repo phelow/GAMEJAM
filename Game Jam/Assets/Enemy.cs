@@ -8,7 +8,16 @@ public class Enemy : MonoBehaviour {
 		Speed
 	}
 
+	public enum Animation
+	{
+		None,
+		Melee1,
+		Melee2
+	}
+
 	protected static GameObject s_player;
+
+	[SerializeField]protected Animation m_animChoice;
 
 	[SerializeField]protected SpriteRenderer m_spriteRenderer;
 	[SerializeField]protected Buff m_buff = Buff.Speed;
@@ -21,10 +30,21 @@ public class Enemy : MonoBehaviour {
 	[SerializeField]private float m_timeBetweenBuffBursts = .1f;
 	[SerializeField]private float m_buffRange = 10.0f;
 	[SerializeField]private float m_buffedSpeed = 10.0f;
+	[SerializeField]protected Animator m_animator;
 
 
 	// Use this for initialization
 	void Start () {
+
+		switch (m_animChoice) {
+		case Animation.Melee1:
+			m_animator.CrossFade ("Melee1",0.0f);
+			break;
+		case Animation.Melee2:
+			m_animator.CrossFade ("Melee2",0.0f);
+			break;
+		}
+
 		s_player = GameObject.FindGameObjectWithTag ("Player");
 		m_curHealth = m_maxHealth;
 		if (m_buff == Buff.Speed) {
