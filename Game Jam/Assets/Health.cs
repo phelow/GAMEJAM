@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour {
 	private static Health s_instance;
@@ -35,6 +36,7 @@ public class Health : MonoBehaviour {
 		if (s_instance.m_curHealth < 0) {
 			Debug.Log ("You have died");
 			//TODO: gameover
+			SceneManager.LoadScene(2);
 		}
 		s_instance.m_healthText.text = "" + s_instance.m_curHealth;
 	}
