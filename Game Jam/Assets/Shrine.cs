@@ -343,6 +343,8 @@ public class Shrine : MonoBehaviour {
 			if( dist < m_triggerDistance){
 				//if he is heal him as a function of time and effectiveness and distance
 				Health.Heal((1 + m_triggerDistance - dist) * m_effectiveness * dt);
+				CharacterInput.LerpColor (Color.white, Color.green,(1 + m_triggerDistance - dist) * m_effectiveness * dt);
+
 			}
 			break;
 
@@ -351,24 +353,28 @@ public class Shrine : MonoBehaviour {
 			if (dist < m_triggerDistance) {
 				//if he is heal him as a function of time and effectiveness and distance
 				CharacterInput.SetFireRate (Mathf.Lerp (m_minFireRate, m_maxFireRate, (1 + m_triggerDistance - dist)));
+				CharacterInput.LerpColor (Color.white, Color.red,(1 + m_triggerDistance - dist) * m_effectiveness * dt);
 			}
 			break;
 		case ShrineTypePositiveEffect.PlayerMovementIncrease:
 			if (dist < m_triggerDistance) {
 				//if he is heal him as a function of time and effectiveness and distance
 				CharacterInput.SetMovementSpeed (Mathf.Lerp (m_minPlayerMoveSpeed, m_maxPlayerMoveSpeed, (1 + m_triggerDistance - dist)));
+				CharacterInput.LerpColor (Color.white, Color.yellow,(1 + m_triggerDistance - dist) * m_effectiveness * dt);
 			}
 			break;
 		case ShrineTypePositiveEffect.ImprovePlayerDamageDealt:
 			if (dist < m_triggerDistance) {
 				//if he is heal him as a function of time and effectiveness and distance
 				Projectile.SetDamageMultiplier (Mathf.Lerp (m_minPlayerDamageMult, m_maxPlayerDamageMult, (1 + m_triggerDistance - dist)));
+				CharacterInput.LerpColor (Color.white, Color.blue,(1 + m_triggerDistance - dist) * m_effectiveness * dt);
 			}
 			break;
 		case ShrineTypePositiveEffect.ReducePlayerDamageTaken:
 			if (dist < m_triggerDistance) {
 				//if he is heal him as a function of time and effectiveness and distance
 				Health.SetDamageMultiplier (Mathf.Lerp (m_minPlayerDamageTakenMult, m_maxPlayerDamageTakenMult, (1 + m_triggerDistance - dist)));
+				CharacterInput.LerpColor (Color.white, Color.black,(1 + m_triggerDistance - dist) * m_effectiveness * dt);
 			}
 			break;
 		}

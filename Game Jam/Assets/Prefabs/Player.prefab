@@ -282,6 +282,7 @@ MonoBehaviour:
   m_playerTakeDamage: {fileID: 8300000, guid: fb989230200ee5c46956d0c207f581b1, type: 3}
   m_attackSpriteRenderer: {fileID: 21285024}
   m_medallionSpriteRenderer: {fileID: 21211508}
+  m_characterSpriteRenderer: {fileID: 21279492}
   m_medallion: {fileID: 0}
   m_attack: {fileID: 0}
 --- !u!212 &21211508

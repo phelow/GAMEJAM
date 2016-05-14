@@ -44,6 +44,7 @@ public class CharacterInput : MonoBehaviour {
 
 	[SerializeField]private SpriteRenderer m_attackSpriteRenderer;
 	[SerializeField]private SpriteRenderer m_medallionSpriteRenderer;
+	[SerializeField]private SpriteRenderer m_characterSpriteRenderer;
 	[SerializeField]private Sprite m_medallion;
 	[SerializeField]private Sprite m_attack;
 
@@ -52,6 +53,11 @@ public class CharacterInput : MonoBehaviour {
 	private GameMaster.ItemsEnabled m_itemsEnabled;
 
 	private static bool m_immobilized = false;
+
+	public static void LerpColor(Color a, Color b, float amt){
+		s_instance.m_characterSpriteRenderer.color = Color.Lerp (a, b, amt);
+	}
+
 
 	public static void PlayPlayerTakeDamageSoundEffect(){
 		s_instance.m_as.PlayOneShot (s_instance.m_playerTakeDamage);
