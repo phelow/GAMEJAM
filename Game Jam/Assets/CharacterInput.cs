@@ -27,6 +27,9 @@ public class CharacterInput : MonoBehaviour {
 	[SerializeField]private float m_amuletMaxStrength = 5.0f;
 
 	[SerializeField]private float m_timeBetweenAttacks = 1.0f;
+
+	[SerializeField]private Animator m_animator;
+
 	private float m_timeSinceLastAttack;
 
 	private static bool m_immobilized = false;
@@ -123,10 +126,43 @@ public class CharacterInput : MonoBehaviour {
 	public static void ResetSpeed(){
 		s_instance._speed = s_instance._defaultSpeed;
 	}
+	private enum direction
+	{
+		up,
+		down,
+		left,
+		right
+	}
+	private direction dir = direction.up;
 
 	private IEnumerator PlayerInput(){
 		while (true) {
 			if (m_immobilized == false) {
+				if (Input.GetAxis ("Vertical") < -0.3f) {
+					if (dir != direction.up) {
+						m_animator.CrossFade ("Forward", 0.0f);
+						dir = direction.up;
+					}
+				} else if (Input.GetAxis ("Vertical") > .3f) {
+					if (dir != direction.down) {
+						m_animator.CrossFade ("Backward", 0.0f);
+						dir = direction.down;
+					}
+
+				}else if (Input.GetAxis ("Horizontal") < -0.3f) {
+					if (dir != direction.left) {
+						m_animator.CrossFade ("Left", 0.0f);
+						dir = direction.left;
+					}
+				} else if (Input.GetAxis ("Horizontal") > .3f) {
+					if (dir != direction.right) {
+						m_animator.CrossFade ("Right",0.0f);
+						dir = direction.right;
+					}
+
+				}
+
+
 				if (Input.GetAxis ("Vertical") < -0.3f) {
 					transform.up = Vector2.down;
 					_rb.AddRelativeForce (transform.up * _speed);
@@ -138,7 +174,6 @@ public class CharacterInput : MonoBehaviour {
 
 
 				if (Input.GetAxis ("Horizontal") < -0.3f) {
-
 					transform.up = Vector2.left;
 					_rb.AddRelativeForce (transform.up * _speed);
 				} else if (Input.GetAxis ("Horizontal") > .3f) {
