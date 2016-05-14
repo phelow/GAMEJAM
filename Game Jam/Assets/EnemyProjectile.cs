@@ -3,10 +3,12 @@ using System.Collections;
 
 public class EnemyProjectile : Attack {
 	private static float ms_damageMultiplier = 1.0f;
+	[SerializeField]private ParticleSystem m_particleSystem;
 
 	// Use this for initialization
 	void Start () {
 
+		m_particleSystem.startColor = new Color(Random.Range(0.0f,1.0f),Random.Range(0.0f,1.0f),Random.Range(0.0f,1.0f));
 	}
 
 	// Update is called once per frame
