@@ -80,7 +80,17 @@ public class Enemy : MonoBehaviour {
 		m_rb.AddForce (m_speed * (s_player.transform.position - transform.position));
 	}
 
+	private IEnumerator DamageEffect(){
+		for (int i = 0; i < 10; i++) {
+			m_spriteRenderer.color = Color.red;
+			yield return new WaitForEndOfFrame ();
+			m_spriteRenderer.color = Color.white;
+			yield return new WaitForEndOfFrame ();
+		}
+	}
+
 	public void Damage(float dam){
+		StartCoroutine (DamageEffect ());	
 		m_curHealth -= dam;
 		if (m_curHealth < 0.0f) {
 			Destroy (this.gameObject);
