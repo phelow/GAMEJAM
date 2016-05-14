@@ -8,12 +8,16 @@ public class Shrine : MonoBehaviour {
 		FireRate,
 		PlayerMovementIncrease,
 		ImprovePlayerDamageDealt,
-		ReducePlayerDamageTaken
+		ReducePlayerDamageTaken,
+		None
 	}
 
 	public enum ShrineTypeNegativeEffect{
 		Hurting,
 		Spawner,
+		ReducePlayerDamageDealt,
+		PlayerMovementDecrease,
+		IncreasePlayerDamageTaken,
 		None
 	}
 
@@ -43,6 +47,10 @@ public class Shrine : MonoBehaviour {
 
 	[SerializeField]private float m_minPlayerMoveSpeed = 1.0f;
 	[SerializeField]private float m_maxPlayerMoveSpeed = 1.0f;
+
+	[SerializeField]private float m_minPlayerMoveDebuffSpeed = 0.5f;
+	[SerializeField]private float m_maxPlayerMoveDebuffSpeed = 0.1f;
+
 	[SerializeField]private float m_excavationTime = 3.0f;
 
 	[SerializeField]Rigidbody2D m_rb;
@@ -61,8 +69,20 @@ public class Shrine : MonoBehaviour {
 	[SerializeField]private float m_maxPlayerDamageMult = 10.0f;
 
 
+	[SerializeField]private float m_minPlayerDamageDealtDebuffMult = 1.0f;
+	[SerializeField]private float m_maxPlayerDamageDealtDebuffMult = 10.0f;
+
+
+	[SerializeField]private float m_minPlayerDamageDebuffMult = .5f;
+	[SerializeField]private float m_maxPlayerDamageDebuffMult = .1f;
+
+
 	[SerializeField]private float m_minPlayerDamageTakenMult = 1.0f;
 	[SerializeField]private float m_maxPlayerDamageTakenMult = .1f;
+
+
+	[SerializeField]private float m_minPlayerDamageDebuffTakenMult = 2.0f;
+	[SerializeField]private float m_maxPlayerDamageDebuffTakenMult = 10.0f;
 
 
 	private static Phase s_phase;
@@ -317,6 +337,25 @@ public class Shrine : MonoBehaviour {
 				Health.TakeDamage ((1 + m_triggerDistance - dist) * m_effectiveness * dt);
 			}
 			break;
+		case ShrineTypeNegativeEffect.ReducePlayerDamageDealt:
+			//See if the player is close enough
+			if (dist < m_triggerDistance) {
+				//if he is heal him as a function of time and effectiveness and distance
+				Projectile.SetDamageMultiplier (Mathf.Lerp (m_minPlayerDamageDebuffMult, m_maxPlayerDamageDebuffMult, (1 + m_triggerDistance - dist)));
+
+			}
+			break;
+		case ShrineTypeNegativeEffect.PlayerMovementDecrease:
+			if (dist < m_triggerDistance) {
+				//if he is heal him as a function of time and effectiveness and distance
+				CharacterInput.SetMovementSpeed (Mathf.Lerp (m_minPlayerMoveDebuffSpeed, m_maxPlayerMoveDebuffSpeed, (1 + m_triggerDistance - dist)));
+			}
+			break;
+		case ShrineTypeNegativeEffect.IncreasePlayerDamageTaken:
+			if (dist < m_triggerDistance) {
+				//if he is heal him as a function of time and effectiveness and distance
+				Health.SetDamageMultiplier (Mathf.Lerp (m_minPlayerDamageDebuffTakenMult, m_maxPlayerDamageDebuffTakenMult, (1 + m_triggerDistance - dist)));
+			}
 		}
 	}
 
