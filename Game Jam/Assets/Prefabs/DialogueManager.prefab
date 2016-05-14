@@ -1,0 +1,581 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &104542
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 470038}
+  - 114: {fileID: 11437778}
+  m_Layer: 0
+  m_Name: Night2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!1 &111974
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 419050}
+  - 114: {fileID: 11432124}
+  m_Layer: 0
+  m_Name: DialogueManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &118660
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 466150}
+  - 114: {fileID: 11460590}
+  m_Layer: 0
+  m_Name: Night1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!1 &130644
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 418372}
+  - 114: {fileID: 11446044}
+  m_Layer: 0
+  m_Name: Day4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!1 &135806
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 406118}
+  - 114: {fileID: 11452122}
+  m_Layer: 0
+  m_Name: Day1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!1 &145144
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 497998}
+  - 114: {fileID: 11412420}
+  m_Layer: 0
+  m_Name: Night3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!1 &151644
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 439108}
+  - 114: {fileID: 11414340}
+  m_Layer: 0
+  m_Name: Day3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!1 &155528
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 446628}
+  - 114: {fileID: 11433230}
+  m_Layer: 0
+  m_Name: Night5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!1 &174086
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 464910}
+  - 114: {fileID: 11406016}
+  m_Layer: 0
+  m_Name: Night4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!1 &188566
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 498004}
+  - 114: {fileID: 11438504}
+  m_Layer: 0
+  m_Name: Day5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!1 &194846
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 443100}
+  - 114: {fileID: 11433534}
+  m_Layer: 0
+  m_Name: Day2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &406118
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 135806}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 419050}
+  m_RootOrder: 0
+--- !u!4 &418372
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 130644}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 419050}
+  m_RootOrder: 6
+--- !u!4 &419050
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 111974}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.10500002, y: 3.3137748, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 406118}
+  - {fileID: 466150}
+  - {fileID: 443100}
+  - {fileID: 470038}
+  - {fileID: 439108}
+  - {fileID: 497998}
+  - {fileID: 418372}
+  - {fileID: 464910}
+  - {fileID: 498004}
+  - {fileID: 446628}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!4 &439108
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 151644}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 419050}
+  m_RootOrder: 4
+--- !u!4 &443100
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194846}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 419050}
+  m_RootOrder: 2
+--- !u!4 &446628
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155528}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 419050}
+  m_RootOrder: 9
+--- !u!4 &464910
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 174086}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 419050}
+  m_RootOrder: 7
+--- !u!4 &466150
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 118660}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 419050}
+  m_RootOrder: 1
+--- !u!4 &470038
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 104542}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 419050}
+  m_RootOrder: 3
+--- !u!4 &497998
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145144}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 419050}
+  m_RootOrder: 5
+--- !u!4 &498004
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188566}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 419050}
+  m_RootOrder: 8
+--- !u!114 &11406016
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 174086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0e59d4ca721d034ea3622e451b07af5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_times: 0500000005000000030000000200000003000000020000000300000002000000050000000200000005000000
+  m_lines:
+  - ' '
+  - "The world tells a story, if you\u2019re willing to listen."
+  - This is such superstitious bullshit.
+  - "I\u2019m listening."
+  - What am I doing?
+  - Speak to me.
+  - Am I going insane?
+  - Tell me your secrets.
+  - "I don\u2019t know."
+  - ' '
+  - I know what I have to do now.
+  m_text: {fileID: 0}
+--- !u!114 &11412420
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8abdd9015f2dd14284e6881c6d04a97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_times: 0500000005000000050000000500000005000000050000000a0000000300000002000000050000000500000005000000
+  m_lines:
+  - ' '
+  - What do I really have to be proud of?
+  - "Isn\u2019t my entire career really just dumb luck?"
+  - ' '
+  - I need to stop thinking about it.
+  - ' '
+  - "I\u2019m cursed!"
+  - Am I cursed?
+  - I must be cursed.
+  - "Why didn\u2019t I listen? I could have prevented this."
+  - "It isn\u2019t real."
+  - "It\u2019s all real."
+  m_text: {fileID: 0}
+--- !u!114 &11414340
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 151644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 050de9df9982d0343b48e693026d73ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_times: 0500000005000000050000000500000005000000
+  m_lines:
+  - Am I going mad?
+  - "That dream still lingers with me. I can\u2019t get it out of my head."
+  - Today, the artifacts almost seem to call to me, begging to be deciphered.
+  - "I tell myself that I\u2019m digging today the same as I always have."
+  - "But I can\u2019t help wondering what tonight will hold..."
+  m_text: {fileID: 0}
+--- !u!114 &11432124
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 111974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9a33e363ea44fc458a69dbbbb5d795c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Day1: {fileID: 135806}
+  Night1: {fileID: 118660}
+  Day2: {fileID: 194846}
+  Night2: {fileID: 104542}
+  Day3: {fileID: 151644}
+  Night3: {fileID: 145144}
+  Day4: {fileID: 130644}
+  Night4: {fileID: 174086}
+  Day5: {fileID: 188566}
+  Night5: {fileID: 155528}
+--- !u!114 &11433230
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 377022fb7fa4a5e48979c46961bca12c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_times: 0600000004000000040000000400000004000000040000000400000004000000040000000400000004000000040000000400000006000000
+  m_lines:
+  - I see.
+  - I feel blind.
+  - I understand.
+  - I don't understand.
+  - It all makes sense now.
+  - Nothing makes sense anymore.
+  - Everything is becoming clear.
+  - Everything is so hazy.
+  - There's no doubt about it.
+  - I can't trust anything I see or hear.
+  - Knowledge is power.
+  - I am powerless.
+  - I can do this.
+  - Please, help me...
+  m_text: {fileID: 0}
+--- !u!114 &11433534
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b2b467fbe86ed0478d6ab9ce5f67d92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_times: 0500000005000000050000000500000005000000
+  m_lines:
+  - What an exhausting night, what with all those...dreams?
+  - Of course they were dreams! What else could they be?
+  - "I\u2019m a scientist, dammit! Curses are completely irrational."
+  - Everyone is still congratulating me; I need to just enjoy my good fortune.
+  - I mean, look at all these artifacts, just begging to be unearthed!
+  m_text: {fileID: 0}
+--- !u!114 &11437778
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 104542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59c58f50a0ad6b043a63752a601b2864, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_times: 04000000030000000700000003000000050000000a0000000500000005000000050000000500000003000000020000000300000002000000
+  m_lines:
+  - What is this?
+  - Another dream?
+  - 
+  - What the hell is going on?
+  - Why does this keep happening?
+  - I mean, this IS all in my head...right?
+  - "This can\u2019t be real..."
+  - ' '
+  - Can it?
+  - ' '
+  - "It\u2019s all in my head."
+  - "This isn\u2019t real."
+  - "It\u2019s all in my head."
+  - "This isn\u2019t real."
+  m_text: {fileID: 0}
+--- !u!114 &11438504
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35f5d777f3faa1242a77dd7ec77c8310, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_times: 05000000050000000500000002000000050000000200000005000000
+  m_lines:
+  - "Let those fools snicker behind my back; it doesn\u2019t matter."
+  - "They don\u2019t see what I see. They don\u2019t know what I know."
+  - There is so much work to be done and only I can do it.
+  - "I\u2019m not insane."
+  - A place for everything and everything in its place.
+  - "I\u2019m NOT insane."
+  - I have to get this right; I ignore the omens at my peril!
+  m_text: {fileID: 0}
+--- !u!114 &11446044
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 130644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc4be1668bbda4243afb8a1533f52738, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_times: 0500000005000000050000000500000005000000
+  m_lines:
+  - "I told my colleagues about my dreams today; now everyone thinks I\u2019m crazy."
+  - Bernard actually asked if I need to be relieved! Fuck him.
+  - No one is going to take this away from me. Especially not fucking Bernard...
+  - "I tried to find that crazy old woman, but she\u2019s gone. Figures."
+  - I have to keep digging; how else will I know what the future holds?
+  m_text: {fileID: 0}
+--- !u!114 &11452122
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 135806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07be50dbde251a44aacac00aeacb9267, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_times: 0500000005000000050000000500000005000000
+  m_lines:
+  - "What a fantastic find! Those bastards from the society won\u2019t be able to
+    dismiss me now!"
+  - Even Bernard congratulated me and he hates my guts.
+  - "I can\u2019t believe that old woman though, babbling about curses. What does
+    SHE know?"
+  - " I should get to work: these hieroglyphics won\u2019t decipher themselves!"
+  - "Ugh, what a waste of time! Maybe I\u2019ll have more luck tomorrow. "
+  m_text: {fileID: 0}
+--- !u!114 &11460590
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 118660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6748d4f2cb1eca343be0fc2bd415ad7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_times: 06000000050000000500000005000000050000000a0000000a0000000a00000005000000
+  m_lines:
+  - "I\u2019m proud of what I\u2019ve done."
+  - This is a great discovery.
+  - "We\u2019ll learn so much."
+  - "What a strange dream\u2026"
+  - "That talk of a curse must\u2019ve really gotten to me."
+  - ' '
+  - "Well, I guess I\u2019ll humor my psyche."
+  - I must be seriously fucked in the head.
+  - "I wonder when I\u2019m going to wake up."
+  m_text: {fileID: 0}
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 111974}
+  m_IsPrefabParent: 1

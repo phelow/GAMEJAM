@@ -82,7 +82,6 @@ public class Enemy : MonoBehaviour {
 	protected IEnumerator BuffOtherEnemies(){
 		while (true) {
 			Collider2D[] hitColliders = Physics2D.OverlapCircleAll (transform.position, m_buffRange);
-			Debug.Log (hitColliders.Length);
 			foreach (Collider2D col in hitColliders) {
 				Enemy en = col.GetComponent<Enemy> ();
 				if(en){
